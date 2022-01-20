@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 import UserAvatar from './UserAvatar';
 
-import breakpoint from '../../styles/breakpoints';
+import deviceSize from '../../styles/breakpoints';
 
 import logo from '../../assets/logo.svg';
 
 const HeaderContainer = styled.header`
   background-color: #373b53;
   display: flex;
-
-  @media only screen and ${breakpoint.device.lg} {
+  @media screen and (min-width: ${deviceSize.lg}) {
     position: fixed;
     display: block;
     top: 0;
@@ -24,8 +23,7 @@ const HeaderContainer = styled.header`
 const Logo = styled.img`
   width: 72px;
   height: 72px;
-
-  @media only screen and ${breakpoint.device.lg} {
+  @media screen and (min-width: ${deviceSize.lg}) {
     width: 100%;
     height: auto;
   }

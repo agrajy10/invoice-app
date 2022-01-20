@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import breakpoint from '../../styles/breakpoints';
+import deviceSize from '../../styles/breakpoints';
 
 import avatar from '../../assets/image-avatar.jpg';
 
@@ -10,7 +10,7 @@ const AvatarContainer = styled.div`
   display: flex;
   border-left: 1px solid #494e6e;
 
-  @media only screen and ${breakpoint.device.lg} {
+  @media screen and (min-width: ${deviceSize.lg}) {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -28,7 +28,7 @@ const AvatarImageHolder = styled.div`
   height: 32px;
   border-radius: 50%;
   overflow: hidden;
-  @media only screen and ${breakpoint.device.lg} {
+  @media screen and (min-width: ${deviceSize.lg}) {
     width: 40px;
     height: 40px;
   }
