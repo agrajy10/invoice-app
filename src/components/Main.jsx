@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 
 import InvoiceItem from './InvoiceItem/InvoiceItem';
+import FilterDropdown from './FilterDropdown';
 
 import { AppContext } from '../context/AppContext';
 
 import deviceSize from '../styles/breakpoints';
-import FilterDropdown from './FilterDropdown';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -60,19 +60,19 @@ const InvoicesList = styled.ul`
 `;
 
 function Main() {
-  const { invoices } = useContext(AppContext);
+  const { filteredInvoices } = useContext(AppContext);
   return (
     <MainContainer>
       <MainContainerTop>
         <div>
           <Heading>Invoices</Heading>
-          <InvoicesCount>{invoices.length} invoices</InvoicesCount>
+          <InvoicesCount>{filteredInvoices.length} invoices</InvoicesCount>
         </div>
         <FilterDropdown />
       </MainContainerTop>
-      {invoices.length > 0 && (
+      {filteredInvoices.length > 0 && (
         <InvoicesList>
-          {invoices.map((invoice) => (
+          {filteredInvoices.map((invoice) => (
             <li key={invoice.id}>
               <InvoiceItem {...invoice} />
             </li>

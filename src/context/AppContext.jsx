@@ -1,13 +1,21 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
+
+import reducer from '../reducer';
 
 import data from '../data.json';
+
+const initalState = {
+  invoices: data,
+  filteredInvoices: data,
+  filter: 'all'
+};
 
 const AppContext = createContext(null);
 
 const AppProvider = ({ children }) => {
-  const [invoices, setInvoices] = useState(data);
+  const [state, dispatch] = useReducer(reducer, initalState);
 
-  return <AppContext.Provider value={{ invoices }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ ...state, dispatch }}>{children}</AppContext.Provider>;
 };
 
 export { AppContext, AppProvider };

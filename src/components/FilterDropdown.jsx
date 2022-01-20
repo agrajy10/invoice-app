@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import CustomRadio from './CustomRadio';
+
+import { AppContext } from '../context/AppContext';
+
+import { FILTER_INVOICES } from '../actions';
 
 import IconArrowDown from '../assets/icon-arrow-down.svg';
 
@@ -50,14 +54,14 @@ const DropdownWrapper = styled.div`
 `;
 
 function FilterDropdown() {
-  const [isExpanded, setisExpanded] = useState(false);
-  const [filter, setFilter] = useState('all');
+  const { filter, dispatch } = useContext(AppContext);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const onClick = () => setisExpanded(!isExpanded);
+  const onClick = () => setIsExpanded(!isExpanded);
 
   const onChange = (e) => {
-    setFilter(e.target.value);
-    setisExpanded(false);
+    dispatch({ type: FILTER_INVOICES, payload: e.target.value });
+    setIsExpanded(false);
   };
 
   return (
