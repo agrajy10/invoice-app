@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import InvoiceStatusBadge from './InvoiceStatusBadge';
 
 import deviceSize from '../../styles/breakpoints';
+import { formatDate, formatPrice } from '../../utils/utils';
 
 import { ReactComponent as IconArrowRight } from '../../assets/icon-arrow-right.svg';
 
@@ -16,6 +17,7 @@ const Wrapper = styled.div`
   padding: 64px 24px 24px 24px;
   border: 1px solid #fff;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  margin-bottom: 16px;
   &:hover {
     border-color: #7c5dfa;
   }
@@ -93,14 +95,16 @@ const ArrowIcon = styled.div`
   }
 `;
 
-function InvoiceItem() {
+function InvoiceItem({ clientName, id, paymentDue, status, total }) {
+  const formattedDueDate = `Due ${formatDate(paymentDue)}`;
+  const formattedTotal = formatPrice(total);
   return (
     <Wrapper>
-      <InvoiceID>RT3080</InvoiceID>
-      <DueDate>Due 19 Aug 2021</DueDate>
-      <ClientName>Jensen Huang</ClientName>
-      <Amount>£ 1,800.90</Amount>
-      <InvoiceStatusBadge status="pending" />
+      <InvoiceID>{id}</InvoiceID>
+      <DueDate>{formattedDueDate}</DueDate>
+      <ClientName>{clientName}</ClientName>
+      <Amount>{formattedTotal}</Amount>
+      <InvoiceStatusBadge status={status} />
       <ArrowIcon>
         <IconArrowRight />
       </ArrowIcon>

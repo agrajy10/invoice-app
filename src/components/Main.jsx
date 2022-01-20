@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 
 import InvoiceItem from './InvoiceItem/InvoiceItem';
+
+import { AppContext } from '../context/AppContext';
 
 import deviceSize from '../styles/breakpoints';
 
@@ -43,12 +46,27 @@ const InvoicesCount = styled.p`
   }
 `;
 
+const InvoicesList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+
 function Main() {
+  const { invoices } = useContext(AppContext);
   return (
     <MainContainer>
       <Heading>Invoices</Heading>
-      <InvoicesCount>7 invoices</InvoicesCount>
-      <InvoiceItem />
+      <InvoicesCount>{invoices.length} invoices</InvoicesCount>
+      {invoices.length > 0 && (
+        <InvoicesList>
+          {invoices.map((invoice) => (
+            <li key={invoice.id}>
+              <InvoiceItem {...invoice} />
+            </li>
+          ))}
+        </InvoicesList>
+      )}
     </MainContainer>
   );
 }
