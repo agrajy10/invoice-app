@@ -6,6 +6,7 @@ import InvoiceItem from './InvoiceItem/InvoiceItem';
 import { AppContext } from '../context/AppContext';
 
 import deviceSize from '../styles/breakpoints';
+import FilterDropdown from './FilterDropdown';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -19,6 +20,19 @@ const MainContainer = styled.main`
 
   @media screen and (min-width: ${deviceSize.lg}) {
     padding-top: 72px;
+  }
+`;
+
+const MainContainerTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  @media screen and (min-width: ${deviceSize.md}) {
+    margin-bottom: 56px;
+  }
+  @media screen and (min-width: ${deviceSize.lg}) {
+    margin-bottom: 65px;
   }
 `;
 
@@ -37,13 +51,6 @@ const InvoicesCount = styled.p`
   font-weight: 500;
   color: #888eb0;
   text-spacing: -0.25px;
-  margin-bottom: 32px;
-  @media screen and (min-width: ${deviceSize.md}) {
-    margin-bottom: 56px;
-  }
-  @media screen and (min-width: ${deviceSize.lg}) {
-    margin-bottom: 65px;
-  }
 `;
 
 const InvoicesList = styled.ul`
@@ -56,8 +63,13 @@ function Main() {
   const { invoices } = useContext(AppContext);
   return (
     <MainContainer>
-      <Heading>Invoices</Heading>
-      <InvoicesCount>{invoices.length} invoices</InvoicesCount>
+      <MainContainerTop>
+        <div>
+          <Heading>Invoices</Heading>
+          <InvoicesCount>{invoices.length} invoices</InvoicesCount>
+        </div>
+        <FilterDropdown />
+      </MainContainerTop>
       {invoices.length > 0 && (
         <InvoicesList>
           {invoices.map((invoice) => (
