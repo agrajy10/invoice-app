@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import CustomCheckbox from './CustomCheckbox';
+import CustomRadio from './CustomRadio';
 
 import IconArrowDown from '../assets/icon-arrow-down.svg';
 
@@ -49,19 +49,15 @@ const DropdownWrapper = styled.div`
   }
 `;
 
-const filterOptions = ['draft', 'pending', 'paid'];
-
 function FilterDropdown() {
   const [isExpanded, setisExpanded] = useState(false);
-  const [checkedState, setCheckedState] = useState(new Array(filterOptions.length).fill(false));
+  const [filter, setFilter] = useState('all');
 
   const onClick = () => setisExpanded(!isExpanded);
 
-  const onChange = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
+  const onChange = (e) => {
+    setFilter(e.target.value);
+    setisExpanded(false);
   };
 
   return (
@@ -71,18 +67,38 @@ function FilterDropdown() {
       </DropdownButton>
       {isExpanded && (
         <DropdownWrapper>
-          {filterOptions.map((filterOption, index) => {
-            return (
-              <CustomCheckbox
-                key={index}
-                id={filterOption}
-                label={filterOption}
-                value={filterOption}
-                checked={checkedState[index]}
-                onChange={() => onChange(index)}
-              />
-            );
-          })}
+          <CustomRadio
+            name="invoices-filter"
+            id="all"
+            label="All"
+            value="all"
+            checked={filter === 'all'}
+            onChange={onChange}
+          />
+          <CustomRadio
+            name="invoices-filter"
+            id="draft"
+            label="Draft"
+            value="draft"
+            checked={filter === 'draft'}
+            onChange={onChange}
+          />
+          <CustomRadio
+            name="invoices-filter"
+            id="pending"
+            label="Pending"
+            value="pending"
+            checked={filter === 'pending'}
+            onChange={onChange}
+          />
+          <CustomRadio
+            name="invoices-filter"
+            id="paid"
+            label="Paid"
+            value="paid"
+            checked={filter === 'paid'}
+            onChange={onChange}
+          />
         </DropdownWrapper>
       )}
     </Wrapper>

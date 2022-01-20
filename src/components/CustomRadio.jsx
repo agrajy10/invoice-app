@@ -4,7 +4,7 @@ import IconCheck from '../assets/icon-check.svg';
 
 const Wrapper = styled.div`
   position: relative;
-  input[type='checkbox'] {
+  input[type='radio'] {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const CustomCheckboxLabel = styled.label`
+const CustomRadioLabel = styled.label`
   position: relative;
   span {
     padding-left: 29px;
@@ -43,22 +43,15 @@ const CustomCheckboxLabel = styled.label`
   }
 `;
 
-function CustomCheckbox({ id, label, onChange, value, checked }) {
+function CustomRadio({ id, label, onChange, ...rest }) {
   return (
     <Wrapper>
-      <CustomCheckboxLabel htmlFor={id}>
-        <input
-          type="checkbox"
-          name={id}
-          id={id}
-          value={value}
-          checked={checked}
-          onChange={onChange}
-        />
+      <CustomRadioLabel htmlFor={id}>
+        <input type="radio" id={id} onChange={onChange} {...rest} />
         <span>{label}</span>
-      </CustomCheckboxLabel>
+      </CustomRadioLabel>
     </Wrapper>
   );
 }
 
-export default CustomCheckbox;
+export default CustomRadio;
