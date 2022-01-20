@@ -1,13 +1,55 @@
+import styled from 'styled-components';
+
+import InvoiceItem from './InvoiceItem/InvoiceItem';
+
+import deviceSize from '../styles/breakpoints';
+
+const MainContainer = styled.main`
+  width: 100%;
+  padding: 32px 24px 105px 24px;
+  margin: 0 auto;
+
+  @media screen and (min-width: ${deviceSize.md}) {
+    max-width: 778px;
+    padding-top: 56px;
+  }
+
+  @media screen and (min-width: ${deviceSize.lg}) {
+    padding-top: 72px;
+  }
+`;
+
+const Heading = styled.h1`
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 7px;
+  @media screen and (min-width: ${deviceSize.md}) {
+    font-size: 32px;
+  }
+`;
+
+const InvoicesCount = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  color: #888eb0;
+  text-spacing: -0.25px;
+  margin-bottom: 32px;
+  @media screen and (min-width: ${deviceSize.md}) {
+    margin-bottom: 56px;
+  }
+  @media screen and (min-width: ${deviceSize.lg}) {
+    margin-bottom: 65px;
+  }
+`;
+
 function Main() {
   return (
-    <main>
-      <div>
-        <div>
-          <h1>Invoices</h1>
-          <p>7 Inovices</p>
-        </div>
-      </div>
-    </main>
+    <MainContainer>
+      <Heading>Invoices</Heading>
+      <InvoicesCount>7 invoices</InvoicesCount>
+      <InvoiceItem />
+    </MainContainer>
   );
 }
 
