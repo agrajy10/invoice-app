@@ -87,7 +87,7 @@ function InvoiceItemsList() {
         name="items"
         render={(arrayHelpers) => (
           <div>
-            {values.items.map((index) => {
+            {values.items.map((item, index) => {
               return (
                 <div key={index} className="item-grid">
                   <div className="item-name">
