@@ -2,13 +2,14 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
+import { nanoid } from 'nanoid';
 
 import TextField from '../TextField';
 import Button from '../Button';
 import InvoiceItemsList from './InvoiceItemsList';
 
 import { AppContext } from '../../context/AppContext';
-import { CLOSE_DRAWER } from '../../actions';
+import { CLOSE_DRAWER, ADD_INVOICE } from '../../actions';
 
 import deviceSize from '../../styles/breakpoints';
 
@@ -129,10 +130,23 @@ const validationSchema = Yup.object({
 
 function CreateInoviceForm() {
   const { dispatch } = useContext(AppContext);
+
+  const onSubmit = (values) => {
+    const id = nanoid(6);
+    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'pending', id } });
+    dispatch({ type: CLOSE_DRAWER });
+  };
+
+  const saveInvoice = (values) => {
+    const id = nanoid(6);
+    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'draft', id } });
+    dispatch({ type: CLOSE_DRAWER });
+  };
+
   return (
     <>
       <FormHeading>New Invoice</FormHeading>
-      <Formik initialValues={initialValues} validationSchema={validationSchema}>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {({ values, errors, resetForm }) => {
           return (
             <Form>
@@ -253,7 +267,11 @@ function CreateInoviceForm() {
                   }}>
                   Discard
                 </Button>
-                <Button type="button" variant="tertiary" className="draft">
+                <Button
+                  type="button"
+                  variant="tertiary"
+                  className="draft"
+                  onClick={() => saveInvoice(values)}>
                   Save as Draft
                 </Button>
                 <Button type="submit" className="save-send">

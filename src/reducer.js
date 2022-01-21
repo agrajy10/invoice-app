@@ -1,4 +1,4 @@
-import { FILTER_INVOICES, OPEN_DRAWER, CLOSE_DRAWER } from './actions';
+import { FILTER_INVOICES, OPEN_DRAWER, CLOSE_DRAWER, ADD_INVOICE } from './actions';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -18,6 +18,10 @@ const reducer = (state, action) => {
     }
     case CLOSE_DRAWER: {
       return { ...state, isDrawerOpen: false };
+    }
+    case ADD_INVOICE: {
+      const invoices = [...state.invoices, action.payload];
+      return { ...state, invoices };
     }
     default: {
       return state;
