@@ -131,15 +131,19 @@ const validationSchema = Yup.object({
 function CreateInoviceForm() {
   const { dispatch } = useContext(AppContext);
 
+  const calcTotal = (items) => items.reduce((prev, current) => prev.total + current.total);
+
   const onSubmit = (values) => {
+    const total = calcTotal(values.items);
     const id = nanoid(6);
-    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'pending', id } });
+    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'pending', id, total } });
     dispatch({ type: CLOSE_DRAWER });
   };
 
   const saveInvoice = (values) => {
+    const total = calcTotal(values.items);
     const id = nanoid(6);
-    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'draft', id } });
+    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'draft', id, total } });
     dispatch({ type: CLOSE_DRAWER });
   };
 
