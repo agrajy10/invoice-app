@@ -7,7 +7,8 @@ import data from '../data.json';
 const initalState = {
   invoices: data,
   filteredInvoices: data,
-  filter: 'all'
+  filter: 'all',
+  isDrawerOpen: false
 };
 
 const AppContext = createContext(null);

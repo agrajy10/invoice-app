@@ -7,8 +7,10 @@ import deviceSize from '../../styles/breakpoints';
 import logo from '../../assets/logo.svg';
 
 const HeaderContainer = styled.header`
+  position: relative;
   background-color: #373b53;
   display: flex;
+  z-index: 8000;
   @media screen and (min-width: ${deviceSize.lg}) {
     position: fixed;
     display: block;

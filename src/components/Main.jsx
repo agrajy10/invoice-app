@@ -3,8 +3,11 @@ import styled from 'styled-components';
 
 import InvoiceItem from './InvoiceItem/InvoiceItem';
 import FilterDropdown from './FilterDropdown';
+import Button from './Button';
 
 import { AppContext } from '../context/AppContext';
+
+import { OPEN_DRAWER } from '../actions';
 
 import deviceSize from '../styles/breakpoints';
 
@@ -26,8 +29,11 @@ const MainContainer = styled.main`
 const MainContainerTop = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 32px;
+  & > div:first-child {
+    margin-right: auto;
+  }
   @media screen and (min-width: ${deviceSize.md}) {
     margin-bottom: 56px;
   }
@@ -59,8 +65,20 @@ const InvoicesList = styled.ul`
   list-style: none;
 `;
 
+const NewInvoiceButton = styled(Button)`
+  span {
+    display: none;
+  }
+
+  @media screen and (min-width: ${deviceSize.md}) {
+    span {
+      display: revert;
+    }
+  }
+`;
+
 function Main() {
-  const { filteredInvoices } = useContext(AppContext);
+  const { filteredInvoices, dispatch } = useContext(AppContext);
   return (
     <MainContainer>
       <MainContainerTop>
@@ -69,6 +87,9 @@ function Main() {
           <InvoicesCount>{filteredInvoices.length} invoices</InvoicesCount>
         </div>
         <FilterDropdown />
+        <NewInvoiceButton icon={true} onClick={() => dispatch({ type: OPEN_DRAWER })}>
+          New <span>Invoice</span>
+        </NewInvoiceButton>
       </MainContainerTop>
       {filteredInvoices.length > 0 && (
         <InvoicesList>

@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight:500;
         font-size:0.75rem;
         color:#0C0E16;
+        overflow:${(props) => (props.isDrawerOpen ? 'hidden' : 'auto')}
     }
 `;
 

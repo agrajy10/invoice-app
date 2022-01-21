@@ -1,1 +1,3 @@
 export const FILTER_INVOICES = 'FILTER_INVOICES';
+export const OPEN_DRAWER = 'OPEN_DRAWER';
+export const CLOSE_DRAWER = 'CLOSE_DRAWER';
