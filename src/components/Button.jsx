@@ -13,10 +13,10 @@ const buttonVariantsColor = {
   },
   secondary: {
     bg: '#F9FAFE',
-    color: '#FFFFFF',
+    color: '#7E88C3',
     hover: {
       bg: '#DFE3FA',
-      color: '#FFFFFF'
+      color: '#7E88C3'
     }
   },
   tertiary: {

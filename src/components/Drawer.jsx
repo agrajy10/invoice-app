@@ -18,7 +18,7 @@ const DrawerWrapper = styled.div`
   height: 100%;
   padding-top: 72px;
   z-index: 7010;
-  div {
+  & > div {
     background-color: #fff;
     width: 100%;
     height: 100%;
@@ -28,8 +28,8 @@ const DrawerWrapper = styled.div`
   }
 
   @media screen and (min-width: ${deviceSize.md}) {
-    div {
-      padding: 56px;
+    & > div {
+      padding: 56px 56px 32px 56px;
       max-width: 616px;
       border-radius: 0 20px 20px 0;
     }
@@ -37,9 +37,9 @@ const DrawerWrapper = styled.div`
 
   @media screen and (min-width: ${deviceSize.lg}) {
     padding-top: 0;
-    div {
+    & > div {
       max-width: 719px;
-      padding: 56px 56px 56px 160px;
+      padding: 56px 56px 32px 160px;
     }
   }
 `;
