@@ -131,7 +131,12 @@ const validationSchema = Yup.object({
 function CreateInoviceForm() {
   const { dispatch } = useContext(AppContext);
 
-  const calcTotal = (items) => items.reduce((prev, current) => prev.total + current.total);
+  const calcTotal = (items) => {
+    if (items.length === 1) {
+      return items[0].total;
+    }
+    return items.reduce((prev, current) => prev.total + current.total);
+  };
 
   const onSubmit = (values) => {
     const total = calcTotal(values.items);
@@ -151,7 +156,7 @@ function CreateInoviceForm() {
     <>
       <FormHeading>New Invoice</FormHeading>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        {({ values, errors, resetForm }) => {
+        {({ values, resetForm }) => {
           return (
             <Form>
               <FieldSet>
