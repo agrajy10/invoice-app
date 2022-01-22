@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid';
 import TextField from '../TextField';
 import Button from '../Button';
 import InvoiceItemsList from './InvoiceItemsList';
+import DatePickerField from '../DatePickerField';
 
 import { AppContext } from '../../context/AppContext';
 import { CLOSE_DRAWER, ADD_INVOICE } from '../../actions';
@@ -56,10 +57,14 @@ const AddressFieldsGrid = styled.div`
 
 const InvoiceDatesGrid = styled.div`
   margin-top: 24px;
+  input {
+    margin-bottom: 24px;
+  }
   @media screen and (min-width: ${deviceSize.md}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0 24px;
+    align-items: flex-end;
     div:last-child {
       grid-column: 1/3;
     }
@@ -81,8 +86,8 @@ const FormBottom = styled.div`
 const initialValues = {
   clientName: '',
   clientEmail: '',
-  createdAt: '',
-  paymentDue: '',
+  createdAt: new Date(),
+  paymentDue: new Date(),
   description: '',
   senderAddress: {
     street: '',
@@ -103,7 +108,7 @@ const validationSchema = Yup.object({
   clientName: Yup.string().required('required'),
   clientEmail: Yup.string().email('invalid email').required('required'),
   createdAt: Yup.date(),
-  paymentDue: Yup.date(),
+  paymentDue: Yup.date().min(Yup.ref('createdAt'), "can't be before invoice date"),
   description: Yup.string().required('required'),
   senderAddress: Yup.object().shape({
     street: Yup.string().required('required'),
@@ -156,7 +161,7 @@ function CreateInoviceForm() {
     <>
       <FormHeading>New Invoice</FormHeading>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        {({ values, resetForm }) => {
+        {({ values, errors, setFieldValue, resetForm }) => {
           return (
             <Form>
               <FieldSet>
@@ -244,14 +249,27 @@ function CreateInoviceForm() {
               </FieldSet>
               <InvoiceDatesGrid>
                 <div>
-                  <FormTextField label="Invoice Date" id="createdAt" name="createdAt" type="date" />
+                  <DatePickerField
+                    label="Invoice Date"
+                    name="createdAt"
+                    id="createdAt"
+                    value={values.createdAt}
+                    selected={values.createdAt}
+                    minDate={new Date()}
+                    onChange={setFieldValue}
+                    error={errors.createdAt}
+                  />
                 </div>
                 <div>
-                  <FormTextField
+                  <DatePickerField
                     label="Payment Terms"
-                    id="paymentDue"
                     name="paymentDue"
-                    type="date"
+                    id="paymentDue"
+                    selected={values.paymentDue}
+                    value={values.paymentDue}
+                    minDate={new Date()}
+                    onChange={setFieldValue}
+                    error={errors.paymentDue}
                   />
                 </div>
                 <div>
