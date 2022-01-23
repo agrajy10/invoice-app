@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import InvoiceStatusBadge from './InvoiceStatusBadge';
 
@@ -7,7 +8,7 @@ import { formatDate, formatPrice } from '../../utils/utils';
 
 import { ReactComponent as IconArrowRight } from '../../assets/icon-arrow-right.svg';
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
   padding: 64px 24px 24px 24px;
   border: 1px solid #fff;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
+  text-decoration: none;
   margin-bottom: 16px;
   &:hover {
     border-color: #7c5dfa;
@@ -82,6 +84,7 @@ const Amount = styled.span`
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.8px;
+  color: #0c0e16;
   @media screen and (min-width: ${deviceSize.md}) {
     text-align: right;
   }
@@ -99,7 +102,7 @@ function InvoiceItem({ clientName, id, paymentDue, status, total }) {
   const formattedDueDate = `Due ${formatDate(paymentDue)}`;
   const formattedTotal = formatPrice(total);
   return (
-    <Wrapper>
+    <Wrapper to={id}>
       <InvoiceID>{id}</InvoiceID>
       <DueDate>{formattedDueDate}</DueDate>
       <ClientName>{clientName}</ClientName>
