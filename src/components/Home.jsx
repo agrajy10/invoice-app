@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 
+import MainContainer from './MainContainer';
 import InvoiceItem from './InvoiceItem/InvoiceItem';
 import FilterDropdown from './FilterDropdown';
 import Button from './Button';
@@ -10,21 +11,6 @@ import { AppContext } from '../context/AppContext';
 import { OPEN_DRAWER } from '../actions';
 
 import deviceSize from '../styles/breakpoints';
-
-const MainContainer = styled.main`
-  width: 100%;
-  padding: 32px 24px 105px 24px;
-  margin: 0 auto;
-
-  @media screen and (min-width: ${deviceSize.md}) {
-    max-width: 778px;
-    padding-top: 56px;
-  }
-
-  @media screen and (min-width: ${deviceSize.lg}) {
-    padding-top: 72px;
-  }
-`;
 
 const MainContainerTop = styled.div`
   display: flex;
@@ -77,7 +63,7 @@ const NewInvoiceButton = styled(Button)`
   }
 `;
 
-function Main() {
+function Home() {
   const { filteredInvoices, dispatch } = useContext(AppContext);
   return (
     <MainContainer>
@@ -104,4 +90,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Home;
