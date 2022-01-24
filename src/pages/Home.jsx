@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 
-import MainContainer from './MainContainer';
-import InvoiceItem from './InvoiceItem/InvoiceItem';
-import FilterDropdown from './FilterDropdown';
-import Button from './Button';
+import MainContainer from '../layout/MainContainer';
+import InvoiceItem from '../components/InvoiceItem';
+import FilterDropdown from '../components/FilterDropdown';
+import Button from '../components/Button';
 
 import { AppContext } from '../context/AppContext';
 
@@ -12,7 +12,7 @@ import { OPEN_DRAWER } from '../actions';
 
 import deviceSize from '../styles/breakpoints';
 
-const MainContainerTop = styled.div`
+const HomeHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -67,7 +67,7 @@ function Home() {
   const { filteredInvoices, dispatch } = useContext(AppContext);
   return (
     <MainContainer>
-      <MainContainerTop>
+      <HomeHeader>
         <div>
           <Heading>Invoices</Heading>
           <InvoicesCount>{filteredInvoices.length} invoices</InvoicesCount>
@@ -76,7 +76,7 @@ function Home() {
         <NewInvoiceButton icon={true} onClick={() => dispatch({ type: OPEN_DRAWER })}>
           New <span>Invoice</span>
         </NewInvoiceButton>
-      </MainContainerTop>
+      </HomeHeader>
       {filteredInvoices.length > 0 && (
         <InvoicesList>
           {filteredInvoices.map((invoice) => (

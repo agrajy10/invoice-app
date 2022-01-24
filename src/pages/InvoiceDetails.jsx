@@ -2,13 +2,13 @@ import { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import MainContainer from './MainContainer';
-import InvoiceStatusBadge from './InvoiceItem/InvoiceStatusBadge';
-import InvoiceInfo from './InvoiceInfo';
-import InvoiceItemsTableMobile from './InvoiceItemsTableMobile';
-import InvoiceItemsTable from './InvoiceItemsTable';
-import Button from './Button';
-import DeleteInvoiceModal from './DeleteInvoiceModal';
+import MainContainer from '../layout/MainContainer';
+import InvoiceStatusBadge from '../components/InvoiceStatusBadge';
+import InvoiceInfo from '../components/InvoiceInfo';
+import InvoiceItemsTableMobile from '../components/InvoiceItemsTableMobile';
+import InvoiceItemsTable from '../components/InvoiceItemsTable';
+import Button from '../components/Button';
+import DeleteInvoiceModal from '../components/DeleteInvoiceModal';
 
 import { AppContext } from '../context/AppContext';
 
@@ -85,20 +85,31 @@ const DetailsCard = styled.main`
 
 const DetailsCardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'nameid nameid'
+    'senderaddress senderaddress'
+    'invoicedates clientnameaddress'
+    'clientemail clientemail';
   gap: 30px 20px;
   margin-bottom: 40px;
-  .invoice-id-name,
-  .sender-address,
+  .invoice-id-name {
+    grid-area: nameid;
+  }
+  .sender-address {
+    grid-area: senderaddress;
+  }
+  .invoice-dates {
+    grid-area: invoicedates;
+  }
   .client-email {
-    grid-column: 1/3;
+    grid-area: clientemail;
   }
   @media screen and (min-width: ${deviceSize.md}) {
     grid-template-columns: repeat(3, 1fr);
-    .sender-address,
-    .client-email {
-      grid-column: auto;
-    }
+    grid-template-areas:
+      'nameid nameid senderaddress'
+      'invoicedates clientnameaddress clientemail';
   }
 `;
 
@@ -112,6 +123,7 @@ const InvoiceID = styled.p`
   color: #0c0e16;
   letter-spacing: -0.23px;
   margin-bottom: 4px;
+  margin: 0;
   &:before {
     content: '#';
     color: #7e88c3;
@@ -194,17 +206,19 @@ function InvoiceDetails() {
                 <br />
                 {invoice.senderAddress.country}
               </SenderAddress>
-              <InvoiceInfo
-                className="created-at"
-                label="Invoice date"
-                value={formatDate(invoice.createdAt)}
-              />
-              <InvoiceInfo
-                className="payment-due"
-                label="Payment Due"
-                value={formatDate(invoice.paymentDue)}
-              />
-              <div>
+              <div className="invoice-dates">
+                <InvoiceInfo
+                  className="created-at"
+                  label="Invoice date"
+                  value={formatDate(invoice.createdAt)}
+                />
+                <InvoiceInfo
+                  className="payment-due"
+                  label="Payment Due"
+                  value={formatDate(invoice.paymentDue)}
+                />
+              </div>
+              <div className="client-name-address">
                 <InvoiceInfo className="client-name" label="Bill To" value={invoice.clientName} />
                 <InvoiceInfo className="client-address">
                   <address>

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import InvoiceStatusBadge from './InvoiceStatusBadge';
 
-import deviceSize from '../../styles/breakpoints';
-import { formatDate, formatPrice } from '../../utils/utils';
+import deviceSize from '../styles/breakpoints';
+import { formatDate, formatPrice } from '../utils/utils';
 
-import { ReactComponent as IconArrowRight } from '../../assets/icon-arrow-right.svg';
+import { ReactComponent as IconArrowRight } from '../assets/icon-arrow-right.svg';
 
 const Wrapper = styled(Link)`
   position: relative;

@@ -4,8 +4,8 @@ import 'normalize.css';
 
 import GlobalStyle from './styles/globalStyles';
 import Header from './components/Header/Header';
-import Home from './components/Home';
-import InvoiceDetails from './components/InvoiceDetails';
+import Home from './pages/Home';
+import InvoiceDetails from './pages/InvoiceDetails';
 import Drawer from './components/Drawer';
 
 import { AppContext } from './context/AppContext';
