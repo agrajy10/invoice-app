@@ -9,9 +9,10 @@ import Drawer from './components/Drawer';
 
 import { AppContext } from './context/AppContext';
 import CreateInoviceForm from './components/CreateInvoiceForm/CreateInoviceForm';
+import EditInvoiceForm from './components/EditInvoiceForm';
 
 function App() {
-  const { isDrawerOpen } = useContext(AppContext);
+  const { isEditingInvoice, isDrawerOpen } = useContext(AppContext);
   return (
     <div className="App">
       <GlobalStyle isDrawerOpen={isDrawerOpen} />
@@ -23,7 +24,8 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Drawer isOpen={isDrawerOpen}>
-        <CreateInoviceForm />
+        {isEditingInvoice && <EditInvoiceForm />}
+        {!isEditingInvoice && <CreateInoviceForm />}
       </Drawer>
     </div>
   );

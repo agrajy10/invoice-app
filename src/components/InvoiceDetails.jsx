@@ -12,7 +12,7 @@ import DeleteInvoiceModal from './DeleteInvoiceModal';
 
 import { AppContext } from '../context/AppContext';
 
-import { MARK_INVOICE_PAID } from '../actions';
+import { MARK_INVOICE_PAID, EDIT_INVOICE } from '../actions';
 import { formatDate } from '../utils/utils';
 import useWindowSize from '../hooks/useWindowSize';
 import deviceSize from '../styles/breakpoints';
@@ -160,7 +160,13 @@ function InvoiceDetails() {
             <StatusLbl>Status</StatusLbl>
             <InvoiceStatusBadge status={invoice.status} />
             <InvoiceActions>
-              {invoice.status !== 'paid' && <Button variant="secondary">Edit</Button>}
+              {invoice.status !== 'paid' && (
+                <Button
+                  variant="secondary"
+                  onClick={() => dispatch({ type: EDIT_INVOICE, payload: invoice.id })}>
+                  Edit
+                </Button>
+              )}
               <Button variant="warning" onClick={() => setIsDeleteModalOpen(true)}>
                 Delete
               </Button>

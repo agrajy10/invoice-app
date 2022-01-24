@@ -8,7 +8,9 @@ const initalState = {
   invoices: data,
   filteredInvoices: data,
   filter: 'all',
-  isDrawerOpen: false
+  isDrawerOpen: false,
+  isEditingInvoice: false,
+  editInvoiceID: null
 };
 
 const AppContext = createContext(null);
