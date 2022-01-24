@@ -6,7 +6,8 @@ import {
   DELETE_INVOICE,
   MARK_INVOICE_PAID,
   EDIT_INVOICE,
-  UPDATE_INVOICE
+  UPDATE_INVOICE,
+  CANCEL_INVOICE_EDIT
 } from './actions';
 
 const reducer = (state, action) => {
@@ -53,7 +54,7 @@ const reducer = (state, action) => {
         editInvoiceID: action.payload
       };
     }
-    case UPDATE_INVOICE:
+    case UPDATE_INVOICE: {
       const newInvoices = state.invoices.map((invoice) => {
         if (invoice.id === state.editInvoiceID) {
           return { ...action.payload };
@@ -65,8 +66,19 @@ const reducer = (state, action) => {
         invoices: newInvoices,
         filteredInvoices: newInvoices,
         isEditingInvoice: false,
-        editInvoiceID: null
+        editInvoiceID: null,
+        isDrawerOpen: false
       };
+    }
+
+    case CANCEL_INVOICE_EDIT: {
+      return {
+        ...state,
+        isEditingInvoice: false,
+        editInvoiceID: null,
+        isDrawerOpen: false
+      };
+    }
     default: {
       return state;
     }
