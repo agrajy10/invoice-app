@@ -12,6 +12,7 @@ import DeleteInvoiceModal from './DeleteInvoiceModal';
 
 import { AppContext } from '../context/AppContext';
 
+import { MARK_INVOICE_PAID } from '../actions';
 import { formatDate } from '../utils/utils';
 import useWindowSize from '../hooks/useWindowSize';
 import deviceSize from '../styles/breakpoints';
@@ -139,13 +140,13 @@ function InvoiceDetails() {
   const [invoice, setInvoice] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { invoiceId } = useParams();
-  const { invoices } = useContext(AppContext);
+  const { invoices, dispatch } = useContext(AppContext);
   const windowSize = useWindowSize();
-  console.log(windowSize);
+
   useEffect(() => {
     const [currentInvoice] = invoices.filter((invoice) => invoice.id === invoiceId);
     setInvoice(currentInvoice);
-  }, [invoiceId]);
+  }, [invoiceId, invoices]);
 
   return (
     <MainContainer>
@@ -164,7 +165,11 @@ function InvoiceDetails() {
                 Delete
               </Button>
               {invoice.status !== 'paid' && invoice.status !== 'draft' && (
-                <Button variant="primary">Mark as Paid</Button>
+                <Button
+                  variant="primary"
+                  onClick={() => dispatch({ type: MARK_INVOICE_PAID, payload: invoice.id })}>
+                  Mark as Paid
+                </Button>
               )}
             </InvoiceActions>
           </Header>
