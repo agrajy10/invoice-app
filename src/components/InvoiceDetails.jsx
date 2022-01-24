@@ -207,12 +207,18 @@ function InvoiceDetails() {
             </DetailsCardGrid>
             {windowSize.width <= 576 ? (
               <InvoiceItemsTableMobile
+                status={invoice.status}
                 id={invoice.id}
                 items={invoice.items}
                 total={invoice.total}
               />
             ) : (
-              <InvoiceItemsTable id={invoice.id} items={invoice.items} total={invoice.total} />
+              <InvoiceItemsTable
+                status={invoice.status}
+                id={invoice.id}
+                items={invoice.items}
+                total={invoice.total}
+              />
             )}
           </DetailsCard>
         </>

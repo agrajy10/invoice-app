@@ -82,7 +82,7 @@ const InvoiceTotal = styled.td`
   text-align: right;
 `;
 
-function InvoiceItemsTable({ id, items, total }) {
+function InvoiceItemsTable({ status, id, items, total }) {
   return (
     <Table>
       <thead>
@@ -107,7 +107,7 @@ function InvoiceItemsTable({ id, items, total }) {
       </Body>
       <Footer>
         <tr>
-          <TotalLabel>Grand total</TotalLabel>
+          <TotalLabel>{status === 'paid' ? 'Grand total' : 'Amount Due'}</TotalLabel>
           <InvoiceTotal colSpan={3}>{formatPrice(total)}</InvoiceTotal>
         </tr>
       </Footer>

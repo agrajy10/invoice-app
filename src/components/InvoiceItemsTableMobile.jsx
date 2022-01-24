@@ -79,7 +79,7 @@ const InvoiceTotal = styled.td`
   text-align: right;
 `;
 
-function InvoiceItemsTableMobile({ id, items, total }) {
+function InvoiceItemsTableMobile({ status, id, items, total }) {
   return (
     <ItemsTable>
       <thead>
@@ -107,7 +107,7 @@ function InvoiceItemsTableMobile({ id, items, total }) {
       </Body>
       <Footer>
         <tr>
-          <TotalLabel>Grand Total</TotalLabel>
+          <TotalLabel>{status === 'paid' ? 'Grand total' : 'Amount Due'}</TotalLabel>
           <InvoiceTotal>{formatPrice(total)}</InvoiceTotal>
         </tr>
       </Footer>
