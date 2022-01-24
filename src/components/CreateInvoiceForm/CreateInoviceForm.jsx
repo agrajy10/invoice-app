@@ -146,14 +146,24 @@ function CreateInoviceForm() {
   const onSubmit = (values) => {
     const total = calcTotal(values.items);
     const id = nanoid(6);
-    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'pending', id, total } });
+    const createdAt = values.createdAt.toLocaleDateString();
+    const paymentDue = values.paymentDue.toLocaleDateString();
+    dispatch({
+      type: ADD_INVOICE,
+      payload: { ...values, status: 'pending', id, total, createdAt, paymentDue }
+    });
     dispatch({ type: CLOSE_DRAWER });
   };
 
   const saveInvoice = (values) => {
     const total = calcTotal(values.items);
     const id = nanoid(6);
-    dispatch({ type: ADD_INVOICE, payload: { ...values, status: 'draft', id, total } });
+    const createdAt = values.createdAt.toLocaleDateString();
+    const paymentDue = values.paymentDue.toLocaleDateString();
+    dispatch({
+      type: ADD_INVOICE,
+      payload: { ...values, status: 'draft', id, total, createdAt, paymentDue }
+    });
     dispatch({ type: CLOSE_DRAWER });
   };
 
