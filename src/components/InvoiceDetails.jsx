@@ -8,6 +8,7 @@ import InvoiceInfo from './InvoiceInfo';
 import InvoiceItemsTableMobile from './InvoiceItemsTableMobile';
 import InvoiceItemsTable from './InvoiceItemsTable';
 import Button from './Button';
+import DeleteInvoiceModal from './DeleteInvoiceModal';
 
 import { AppContext } from '../context/AppContext';
 
@@ -136,6 +137,7 @@ const SenderAddress = styled.address`
 
 function InvoiceDetails() {
   const [invoice, setInvoice] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { invoiceId } = useParams();
   const { invoices } = useContext(AppContext);
   const windowSize = useWindowSize();
@@ -158,7 +160,9 @@ function InvoiceDetails() {
             <InvoiceStatusBadge status={invoice.status} />
             <InvoiceActions>
               {invoice.status !== 'paid' && <Button variant="secondary">Edit</Button>}
-              <Button variant="warning">Delete</Button>
+              <Button variant="warning" onClick={() => setIsDeleteModalOpen(true)}>
+                Delete
+              </Button>
               {invoice.status !== 'paid' && invoice.status !== 'draft' && (
                 <Button variant="primary">Mark as Paid</Button>
               )}
@@ -222,6 +226,13 @@ function InvoiceDetails() {
             )}
           </DetailsCard>
         </>
+      )}
+      {invoice && (
+        <DeleteInvoiceModal
+          id={invoice.id}
+          isOpen={isDeleteModalOpen}
+          closeModal={() => setIsDeleteModalOpen(false)}
+        />
       )}
     </MainContainer>
   );

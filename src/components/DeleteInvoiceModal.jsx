@@ -1,7 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 import Button from './Button';
+
+import { AppContext } from '../context/AppContext';
+
+import { DELETE_INVOICE } from '../actions';
 
 const Overlay = styled.div`
   position: fixed;
@@ -13,6 +19,7 @@ const Overlay = styled.div`
 const ModalContainer = styled.div`
   position: fixed;
   width: calc(100% - 48px);
+  max-width: 480px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -44,21 +51,33 @@ const ButtonContainer = styled.div`
   gap: 8px;
 `;
 
-function DeleteInvoiceModal({ id, isOpen }) {
+function DeleteInvoiceModal({ id, isOpen, closeModal }) {
+  const { dispatch } = useContext(AppContext);
+  const navigate = useNavigate();
   if (!isOpen) {
     return null;
   }
+
+  const deleteInvoice = () => {
+    dispatch({ type: DELETE_INVOICE, payload: id });
+    navigate('/');
+  };
+
   return createPortal(
     <>
       <Overlay />
       <ModalContainer>
         <ModalHeading>Confirm Deletion</ModalHeading>
         <ModalMessage>
-          Are you sure you want to delete invoice #XM9141? This action cannot be undone.
+          Are you sure you want to delete invoice #{id}? This action cannot be undone.
         </ModalMessage>
         <ButtonContainer>
-          <Button variant="secondary">Cancel</Button>
-          <Button variant="warning">Delete</Button>
+          <Button variant="secondary" onClick={closeModal}>
+            Cancel
+          </Button>
+          <Button variant="warning" onClick={deleteInvoice}>
+            Delete
+          </Button>
         </ButtonContainer>
       </ModalContainer>
     </>,

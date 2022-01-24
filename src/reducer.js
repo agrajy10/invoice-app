@@ -1,4 +1,4 @@
-import { FILTER_INVOICES, OPEN_DRAWER, CLOSE_DRAWER, ADD_INVOICE } from './actions';
+import { FILTER_INVOICES, OPEN_DRAWER, CLOSE_DRAWER, ADD_INVOICE, DELETE_INVOICE } from './actions';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -22,6 +22,10 @@ const reducer = (state, action) => {
     case ADD_INVOICE: {
       const invoices = [...state.invoices, action.payload];
       return { ...state, invoices };
+    }
+    case DELETE_INVOICE: {
+      const newInvoices = state.invoices.filter((invoice) => invoice.id !== action.payload);
+      return { ...state, invoices: newInvoices, filteredInvoices: newInvoices };
     }
     default: {
       return state;
