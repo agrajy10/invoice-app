@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'normalize.css';
 
 import GlobalStyle from './styles/globalStyles';
 import Header from './components/Header/Header';
