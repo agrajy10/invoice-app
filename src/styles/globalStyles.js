@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
         color:#0C0E16;
         overflow:${(props) => (props.isDrawerOpen ? 'hidden' : 'auto')}
     }
+
+    address {
+        font-style:normal;
+    }
 `;
 
 export default GlobalStyle;
