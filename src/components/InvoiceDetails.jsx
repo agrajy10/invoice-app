@@ -12,6 +12,7 @@ import Button from './Button';
 import { AppContext } from '../context/AppContext';
 
 import { formatDate } from '../utils/utils';
+import useWindowSize from '../hooks/useWindowSize';
 import deviceSize from '../styles/breakpoints';
 
 import IconArrowLeft from '../assets/icon-arrow-left.svg';
@@ -137,7 +138,8 @@ function InvoiceDetails() {
   const [invoice, setInvoice] = useState(null);
   const { invoiceId } = useParams();
   const { invoices } = useContext(AppContext);
-
+  const windowSize = useWindowSize();
+  console.log(windowSize);
   useEffect(() => {
     const [currentInvoice] = invoices.filter((invoice) => invoice.id === invoiceId);
     setInvoice(currentInvoice);
@@ -203,15 +205,14 @@ function InvoiceDetails() {
               </div>
               <InvoiceInfo className="client-email" label="Sent to" value={invoice.clientEmail} />
             </DetailsCardGrid>
-            {invoice.items.length > 0 && (
-              <InvoiceItemsTable id={invoice.id} items={invoice.items} total={invoice.total} />
-            )}
-            {invoice.items.length > 0 && (
+            {windowSize.width <= 576 ? (
               <InvoiceItemsTableMobile
                 id={invoice.id}
                 items={invoice.items}
                 total={invoice.total}
               />
+            ) : (
+              <InvoiceItemsTable id={invoice.id} items={invoice.items} total={invoice.total} />
             )}
           </DetailsCard>
         </>
