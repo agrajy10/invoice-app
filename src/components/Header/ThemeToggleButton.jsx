@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
+import { Switch } from '@headlessui/react';
 
 import { AppContext } from '../../context/AppContext';
 
@@ -8,7 +9,7 @@ import deviceSize from '../../styles/breakpoints';
 import { ReactComponent as IconSun } from '../../assets/icon-sun.svg';
 import { ReactComponent as IconMoon } from '../../assets/icon-moon.svg';
 
-const Button = styled.button`
+const Button = styled(Switch)`
   width: 30px;
   height: 30px;
   background: transparent;
@@ -36,8 +37,11 @@ const Button = styled.button`
 function ThemeToggleButton() {
   const { theme, themeToggler } = useContext(AppContext);
   return (
-    <Button onClick={themeToggler} type="button">
-      {theme === 'light' ? <IconMoon /> : <IconSun />}
+    <Button
+      checked={theme === 'dark' ? true : false}
+      onChange={themeToggler}
+      aria-label="Toggle dark mode">
+      <span aria-hidden="true">{theme === 'light' ? <IconMoon /> : <IconSun />}</span>
     </Button>
   );
 }
