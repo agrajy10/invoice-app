@@ -7,7 +7,8 @@ import {
   MARK_INVOICE_PAID,
   EDIT_INVOICE,
   UPDATE_INVOICE,
-  CANCEL_INVOICE_EDIT
+  CANCEL_INVOICE_EDIT,
+  LOAD_INVOICES_DATA
 } from './actions';
 
 const reducer = (state, action) => {
@@ -70,7 +71,6 @@ const reducer = (state, action) => {
         isDrawerOpen: false
       };
     }
-
     case CANCEL_INVOICE_EDIT: {
       return {
         ...state,
@@ -78,6 +78,9 @@ const reducer = (state, action) => {
         editInvoiceID: null,
         isDrawerOpen: false
       };
+    }
+    case LOAD_INVOICES_DATA: {
+      return { ...state, invoices: action.payload, filteredInvoices: action.payload };
     }
     default: {
       return state;
