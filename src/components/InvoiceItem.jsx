@@ -98,11 +98,11 @@ const ArrowIcon = styled.div`
   }
 `;
 
-function InvoiceItem({ clientName, id, paymentDue, status, total }) {
+function InvoiceItem({ clientName, description, id, paymentDue, status, total }) {
   const formattedDueDate = `Due ${formatDate(paymentDue)}`;
   const formattedTotal = formatPrice(total);
   return (
-    <Wrapper to={id}>
+    <Wrapper to={id} aria-label={`${description} - ${clientName} - View Invoice`}>
       <InvoiceID>{id}</InvoiceID>
       <DueDate>{formattedDueDate}</DueDate>
       <ClientName>{clientName}</ClientName>
