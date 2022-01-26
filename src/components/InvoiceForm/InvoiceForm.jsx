@@ -65,25 +65,18 @@ const FormBottom = styled.div`
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 40px;
-  .draft {
-    margin-left: auto;
+  .discard {
+    margin-right: auto;
   }
 `;
 
-const EditFormBottom = styled(FormBottom)`
-  justify-content: flex-end;
-`;
-
-function InvoiceForm({
-  initialValues,
-  validationSchema,
-  onSubmit,
-  saveInvoice,
-  isEditingInvoice,
-  discard
-}) {
+function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, discard }) {
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      enableReinitialize={true}>
       {({ values, errors, setFieldValue, resetForm }) => {
         return (
           <Form>
@@ -206,7 +199,7 @@ function InvoiceForm({
               </div>
             </InvoiceDatesGrid>
             <InvoiceItemsList />
-            {!isEditingInvoice && (
+            {values.status === '' && (
               <FormBottom>
                 <Button
                   type="button"
@@ -218,7 +211,11 @@ function InvoiceForm({
                   }}>
                   Discard
                 </Button>
-                <Button type="button" variant="tertiary" className="draft" onClick={() => saveInvoice(values)}>
+                <Button
+                  type="button"
+                  variant="tertiary"
+                  className="draft"
+                  onClick={() => saveInvoice(values)}>
                   Save as Draft
                 </Button>
                 <Button type="submit" className="save-send">
@@ -226,8 +223,32 @@ function InvoiceForm({
                 </Button>
               </FormBottom>
             )}
-            {isEditingInvoice && (
-              <EditFormBottom>
+            {values.status === 'draft' && (
+              <FormBottom>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="discard"
+                  onClick={() => {
+                    resetForm();
+                    discard();
+                  }}>
+                  Cancel
+                </Button>
+                <Button
+                  type="button"
+                  variant="tertiary"
+                  className="draft"
+                  onClick={() => saveInvoice(values)}>
+                  Save as Draft
+                </Button>
+                <Button type="submit" className="save-send">
+                  Save & Send
+                </Button>
+              </FormBottom>
+            )}
+            {values.status === 'pending' && (
+              <FormBottom>
                 <Button
                   type="button"
                   variant="secondary"
@@ -241,7 +262,7 @@ function InvoiceForm({
                 <Button type="submit" className="save-send">
                   Save Changes
                 </Button>
-              </EditFormBottom>
+              </FormBottom>
             )}
           </Form>
         );

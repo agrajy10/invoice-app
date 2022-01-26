@@ -26,6 +26,8 @@ const FormHeading = styled.span`
 `;
 
 const initialValues = {
+  id: '',
+  status: '',
   clientName: '',
   clientEmail: '',
   createdAt: new Date(),
@@ -90,7 +92,7 @@ function FormContainer() {
       };
       setInvoice(data);
     }
-  }, [isEditingInvoice]);
+  }, [isEditingInvoice, editInvoiceID]);
 
   const calcTotal = (items) => {
     if (items.length === 1) {
@@ -100,35 +102,46 @@ function FormContainer() {
     return totals.reduce((prev, current) => prev + current);
   };
 
-  const addInvoice = (values) => {
+  const onSubmit = (values) => {
     const total = calcTotal(values.items);
-    const id = nanoid(6);
     const createdAt = convertDateToString(values.createdAt);
     const paymentDue = convertDateToString(values.paymentDue);
-    dispatch({
-      type: ADD_INVOICE,
-      payload: { ...values, status: 'pending', id, total, createdAt, paymentDue }
-    });
+    if (!values.status) {
+      const id = nanoid(6);
+      dispatch({
+        type: ADD_INVOICE,
+        payload: { ...values, status: 'pending', id, total, createdAt, paymentDue }
+      });
+    } else if (values.status === 'draft') {
+      dispatch({
+        type: UPDATE_INVOICE,
+        payload: { ...values, status: 'pending', total, createdAt, paymentDue }
+      });
+    } else if (values.status === 'pending') {
+      dispatch({
+        type: UPDATE_INVOICE,
+        payload: { ...values, total, createdAt, paymentDue }
+      });
+    }
     dispatch({ type: CLOSE_DRAWER });
   };
 
   const saveInvoice = (values) => {
     const total = calcTotal(values.items);
-    const id = nanoid(6);
     const createdAt = convertStringToDate(values.createdAt);
     const paymentDue = convertStringToDate(values.paymentDue);
-    dispatch({
-      type: ADD_INVOICE,
-      payload: { ...values, status: 'draft', id, total, createdAt, paymentDue }
-    });
-    dispatch({ type: CLOSE_DRAWER });
-  };
-
-  const updateInvoice = (values) => {
-    const createdAt = convertDateToString(values.createdAt);
-    const paymentDue = convertDateToString(values.paymentDue);
-    const total = calcTotal(values.items);
-    dispatch({ type: UPDATE_INVOICE, payload: { ...values, createdAt, paymentDue, total } });
+    if (values.status === 'draft') {
+      dispatch({
+        type: UPDATE_INVOICE,
+        payload: { ...values, total, createdAt, paymentDue }
+      });
+    } else {
+      const id = nanoid(6);
+      dispatch({
+        type: ADD_INVOICE,
+        payload: { ...values, status: 'draft', id, total, createdAt, paymentDue }
+      });
+    }
     dispatch({ type: CLOSE_DRAWER });
   };
 
@@ -147,25 +160,13 @@ function FormContainer() {
         </FormHeading>
       )}
       {!invoice && <FormHeading>New Invoice</FormHeading>}
-      {invoice && (
-        <InvoiceForm
-          initialValues={invoice}
-          validationSchema={validationSchema}
-          onSubmit={updateInvoice}
-          isEditingInvoice={isEditingInvoice}
-          discard={discard}
-        />
-      )}
-      {!invoice && (
-        <InvoiceForm
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={addInvoice}
-          saveInvoice={saveInvoice}
-          isEditingInvoice={isEditingInvoice}
-          discard={discard}
-        />
-      )}
+      <InvoiceForm
+        validationSchema={validationSchema}
+        initialValues={invoice || initialValues}
+        discard={discard}
+        saveInvoice={saveInvoice}
+        onSubmit={onSubmit}
+      />
     </>
   );
 }
