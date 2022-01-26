@@ -136,7 +136,7 @@ const InvoiceID = styled.p`
 const InvoiceName = styled.h1`
   font-size: 12px;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin: 4px 0;
 `;
 
 const SenderAddress = styled.address`

@@ -3,13 +3,14 @@ import styled from 'styled-components';
 const Label = styled.h2`
   font-size: 12px;
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 `;
 
 const Value = styled.p`
   font-size: 15px;
   font-weight: 700;
   color: ${({ theme }) => theme.text.h1};
+  margin: 0 0 6px 0;
 `;
 
 const ChildrenContainer = styled.div`
