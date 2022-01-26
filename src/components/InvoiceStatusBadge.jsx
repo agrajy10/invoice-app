@@ -21,7 +21,7 @@ const InvoiceStatus = styled.div`
       position: absolute;
       inset: 0;
       border-radius: 6px;
-      background-color: ${(props) => invoiceStatusColor[props.status]};
+      background-color: ${({ theme, status }) => theme.status[status]};
       opacity: 0.05;
     }
   }
@@ -31,7 +31,7 @@ const InvoiceStatusText = styled.div`
   margin: auto;
   font-size: 12px;
   font-weight: 700;
-  color: ${(props) => invoiceStatusColor[props.status]};
+  color: ${({ theme, status }) => theme.status[status]};
   letter-spacing: -0.25px;
   text-transform: capitalize;
   &:before {
@@ -40,7 +40,7 @@ const InvoiceStatusText = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: ${(props) => invoiceStatusColor[props.status]};
+    background-color: ${({ theme, status }) => theme.status[status]};
     margin-right: 8px;
   }
 `;

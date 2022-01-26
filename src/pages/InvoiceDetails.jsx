@@ -27,7 +27,7 @@ const BackButton = styled(Link)`
   font-weight: 700;
   letter-spacing: -0.25px;
   text-decoration: none;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.text.h1};
   margin-bottom: 32px;
   img {
     margin-right: 23px;
@@ -38,7 +38,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.invoiceDetails.bg};
   border-radius: 8px;
   padding: 24px 32px;
   margin-bottom: 16px;
@@ -64,7 +64,7 @@ const InvoiceActions = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.invoiceDetails.bg};
   padding: 21px 24px;
   @media screen and (min-width: ${deviceSize.md}) {
     position: static;
@@ -74,10 +74,10 @@ const InvoiceActions = styled.div`
 `;
 
 const DetailsCard = styled.main`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.invoiceDetails.bg};
   border-radius: 8px;
   padding: 24px;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.text.color2};
   line-height: 1.6;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
   margin-bottom: 45px;
@@ -120,7 +120,7 @@ const InvoiceIdName = styled.div`
 const InvoiceID = styled.p`
   font-size: 12px;
   font-weight: 700;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.23px;
   margin-bottom: 4px;
   margin: 0;

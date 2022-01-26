@@ -6,7 +6,6 @@ import avatar from '../../assets/image-avatar.jpg';
 
 const AvatarContainer = styled.div`
   padding: 0 24px;
-  margin-left: auto;
   display: flex;
   border-left: 1px solid #494e6e;
 

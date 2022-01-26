@@ -2,41 +2,6 @@ import styled from 'styled-components';
 
 import IconPlus from '../assets/icon-plus.svg';
 
-const buttonVariantsColor = {
-  primary: {
-    bg: '#7C5DFA',
-    color: '#FFFFFF',
-    hover: {
-      bg: '#9277FF',
-      color: '#FFFFFF'
-    }
-  },
-  secondary: {
-    bg: '#F9FAFE',
-    color: '#7E88C3',
-    hover: {
-      bg: '#DFE3FA',
-      color: '#7E88C3'
-    }
-  },
-  tertiary: {
-    bg: '#373B53',
-    color: '#888EB0',
-    hover: {
-      bg: '#0C0E16',
-      color: '#888EB0'
-    }
-  },
-  warning: {
-    bg: '#EC5757',
-    color: '#FFFFFF',
-    hover: {
-      bg: '#FF9797',
-      color: '#FFFFFF'
-    }
-  }
-};
-
 const ButtonBase = styled.button`
   display: inline-block;
   font-family: Spartan, sans-serif;
@@ -48,11 +13,11 @@ const ButtonBase = styled.button`
   border: none;
   cursor: pointer;
   user-select: none;
-  background-color: ${(props) => buttonVariantsColor[props.variant].bg};
-  color: ${(props) => buttonVariantsColor[props.variant].color};
+  background-color: ${({ variant, theme }) => theme.button[variant].bg};
+  color: ${({ variant, theme }) => theme.button[variant].color};
   &:hover {
-    background-color: ${(props) => buttonVariantsColor[props.variant].hover.bg};
-    color: ${(props) => buttonVariantsColor[props.variant].hover.color};
+    background-color: ${({ variant, theme }) => theme.button[variant].hover.bg};
+    color: ${({ variant, theme }) => theme.button[variant].hover.color};
   }
 `;
 

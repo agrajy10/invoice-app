@@ -13,15 +13,16 @@ const Wrapper = styled(Link)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: flex-end;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.invoiceItem.bg};
+  color: ${({ theme }) => theme.invoiceItem.color};
   border-radius: 8px;
   padding: 64px 24px 24px 24px;
-  border: 1px solid #fff;
+  border: 1px solid ${({ theme }) => theme.invoiceItem.borderColor};
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
   text-decoration: none;
   margin-bottom: 16px;
   &:hover {
-    border-color: #7c5dfa;
+    border-color: ${({ theme }) => theme.invoiceItem.hover.borderColor};
   }
   @media screen and (min-width: ${deviceSize.md}) {
     grid-template-columns: 103px 151px 110px 142px 144px 26px;
@@ -37,7 +38,7 @@ const InvoiceID = styled.span`
   left: 24px;
   font-size: 12px;
   font-weight: 700;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.invoiceItem.id};
   text-transform: uppercase;
   margin-bottom: 24px;
   &:before {
@@ -56,7 +57,6 @@ const ClientName = styled.span`
   right: 24px;
   font-size: 12px;
   font-weight: 500;
-  color: #858bb2;
   text-align: right;
   margin-bottom: 24px;
   @media screen and (min-width: ${deviceSize.md}) {
@@ -84,7 +84,7 @@ const Amount = styled.span`
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.8px;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.invoiceItem.total};
   @media screen and (min-width: ${deviceSize.md}) {
     text-align: right;
   }

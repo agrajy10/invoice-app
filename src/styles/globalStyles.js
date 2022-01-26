@@ -7,12 +7,12 @@ const GlobalStyle = createGlobalStyle`
         box-sizing:border-box
     }
     body {
-        background: #F8F8FB;
+        background: ${({ theme }) => theme.body.bg};
         font-family: Spartan, sans-serif;
         font-weight:500;
         font-size:0.75rem;
-        color:#0C0E16;
-        overflow:${(props) => (props.isDrawerOpen ? 'hidden' : 'auto')}
+        color:${({ theme }) => theme.body.color};
+        overflow:${({ isDrawerOpen }) => (isDrawerOpen ? 'hidden' : 'auto')}
     }
 
     address {

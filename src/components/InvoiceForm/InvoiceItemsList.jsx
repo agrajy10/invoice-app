@@ -22,7 +22,7 @@ margin-top: 8px;
 .error {
   font-size: 10px;
   font-weight: 600;
-  color: #ec5757;
+  color: ${({ theme }) => theme.invoiceItemsList.label.error.color};
   display: block;
   margin-top: 32px;
 }
@@ -66,9 +66,9 @@ const DeleteButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: #888eb0;
+  color: ${({ theme }) => theme.invoiceItemsList.deleteButton.color};
   &:hover {
-    color: #ec5757;
+    color: ${({ theme }) => theme.invoiceItemsList.deleteButton.hover.color};
   }
 `;
 

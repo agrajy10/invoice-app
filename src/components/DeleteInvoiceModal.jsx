@@ -23,7 +23,7 @@ const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.deleteModal.bg};
   border-radius: 8px;
   padding: 32px;
   z-index: 7002;
@@ -32,13 +32,13 @@ const ModalContainer = styled.div`
 const ModalHeading = styled.p`
   font-size: 20px;
   font-weight: 700;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.deleteModal.heading};
   margin-bottom: 12px;
 `;
 
 const ModalMessage = styled.p`
   font-size: 12px;
-  color: #888eb0;
+  color: ${({ theme }) => theme.deleteModal.body};
   letter-spacing: -0.23px;
   margin-bottom: 24px;
   line-height: 1.8;

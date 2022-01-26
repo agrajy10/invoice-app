@@ -19,7 +19,7 @@ const DrawerWrapper = styled.div`
   padding-top: 72px;
   z-index: 7010;
   & > div {
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.drawer.bg};
     width: 100%;
     height: 100%;
     overflow-x: hidden;

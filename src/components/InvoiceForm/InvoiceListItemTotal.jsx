@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     font-size: 12px;
     font-weight: 500;
     line-height: 1;
-    color: #7e88c3;
+    color: ${({ theme }) => theme.invoiceItemsList.label.color};
     margin-bottom: 10px;
   }
   .amount {
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     height: 48px;
     font-size: 12px;
     font-weight: 700;
-    color: #888eb0;
+    color: ${({ theme }) => theme.invoiceItemsList.total};
     letter-spacing: -0.25px;
     line-height: 48px;
   }

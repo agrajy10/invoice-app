@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     left: 0;
     visibility: hidden;
     &:checked + span::before {
-      background: #7c5dfa url(${IconCheck}) no-repeat 40% 40%;
+      background: ${({ theme }) => theme.customRadio.checked.bg} url(${IconCheck}) no-repeat 40% 40%;
     }
   }
 `;
@@ -30,15 +30,15 @@ const CustomRadioLabel = styled.label`
       display: inline-block;
       width: 16px;
       height: 16px;
-      border: 1px solid #dfe3fa;
-      background-color: #dfe3fa;
+      border: 1px solid ${({ theme }) => theme.customRadio.borderColor};
+      background-color: ${({ theme }) => theme.customRadio.bg};
       border-radius: 2px;
       position: absolute;
       top: -2px;
       left: 0;
     }
     &:hover:before {
-      border-color: #7c5dfa;
+      border-color: ${({ theme }) => theme.customRadio.hover.borderColor};
     }
   }
 `;

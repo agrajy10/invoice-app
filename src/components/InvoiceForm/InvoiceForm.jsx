@@ -19,7 +19,7 @@ const Legend = styled.legend`
   margin-bottom: 24px;
   font-family: Spartan, sans-serif;
   font-weight: 700;
-  color: #7c5dfa;
+  color: ${({ theme }) => theme.form.legend.color};
   letter-spacing: -0.25px;
 `;
 

@@ -12,15 +12,15 @@ const DatePickerStyling = createGlobalStyle`
       font-weight:700;
       font-size:12px;
       letter-spacing:-0.25px;
-      color:#0C0E16;
+      color:${({ theme }) => theme.datePicker.color};
       border-radius:8px;
       border:none;
-      background-color:#FFF;
+      background-color:${({ theme }) => theme.datePicker.bg};
   }
   .react-datepicker__header--custom {
       padding:0;
       border:none;
-      background-color:#FFF;
+      background-color:${({ theme }) => theme.datePicker.bg};
   }
 
   .react-datepicker__header--custom .react-datepicker__day-names {
@@ -35,23 +35,23 @@ const DatePickerStyling = createGlobalStyle`
   .react-datepicker__day {
       &:hover {
           background-color:transparent;
-          color:#7C5DFA;
+          color:${({ theme }) => theme.datePicker.selectedBg};
       }
   }
 
   .react-datepicker__day--keyboard-selected,
   .react-datepicker__day--selected {
-      background-color:#7C5DFA;
+      background-color:${({ theme }) => theme.datePicker.selectedBg};
       color:#ffffff;
   }
 
   .react-datepicker__day--disabled {
-      color:#0C0E16;
+      color:${({ theme }) => theme.datePicker.color};
       opacity:0.3;
   }
 
   .react-datepicker__day--outside-month {
-      color:#0C0E16;
+      color:${({ theme }) => theme.datePicker.color};
       opacity:0.08;
   }
 `;
@@ -61,34 +61,36 @@ const InputLabel = styled.label`
   font-family: Spartan, sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #7e88c3;
+  color: ${({ theme }) => theme.datePicker.label.color};
   line-height: 1;
   margin-bottom: 10px;
   & + span {
     display: block;
     font-size: 10px;
-    color: #ec5757;
+    color: ${({ theme }) => theme.datePicker.label.error.color};
   }
 `;
 
 const DatePickerInput = styled(DatePicker)`
   width: 100%;
   height: 48px;
-  background: #ffffff url(${IconCalendar}) no-repeat calc(100% - 16px) center;
+  background: ${({ theme }) => theme.datePicker.bg} url(${IconCalendar}) no-repeat calc(100% - 16px)
+    center;
   border-width: 1px;
   border-style: solid;
-  border-color: ${(props) => (props.error ? '#ec5757' : '#dfe3fa')};
+  border-color: ${({ theme, error }) =>
+    error ? theme.datePicker.error.borderColor : theme.datePicker.borderColor};
   border-radius: 4px;
   padding: 15px 42px 15px 20px;
   font-family: Spartan, sans-serif;
   font-size: 12px;
   font-weight: 700;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.25px;
   cursor: pointer;
   &:focus {
     outline: none;
-    border-color: #9277ff;
+    border-color: ${({ theme }) => theme.datePicker.focus.borderColor};
   }
 `;
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import UserAvatar from './UserAvatar';
+import ThemeToggleButton from './ThemeToggleButton';
 
 import deviceSize from '../../styles/breakpoints';
 
@@ -8,7 +9,7 @@ import logo from '../../assets/logo.svg';
 
 const HeaderContainer = styled.header`
   position: relative;
-  background-color: #373b53;
+  background-color: ${({ theme }) => theme.header.bg};
   display: flex;
   z-index: 8000;
   @media screen and (min-width: ${deviceSize.lg}) {
@@ -35,6 +36,7 @@ function Header() {
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Invoice app logo" />
+      <ThemeToggleButton />
       <UserAvatar />
     </HeaderContainer>
   );

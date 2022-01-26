@@ -8,7 +8,8 @@ const InputLabel = styled.label`
   font-family: Spartan, sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: ${(props) => (props.error ? '#EC5757' : '#7e88c3')};
+  color: ${({ theme, error }) =>
+    error ? theme.textField.label.error.color : theme.textField.label.color};
   line-height: 1;
   margin-bottom: 10px;
   span {
@@ -22,17 +23,20 @@ const TextInput = styled.input`
   height: 48px;
   border-width: 1px;
   border-style: solid;
-  border-color: ${(props) => (props.error ? '#EC5757' : '#DFE3FA')};
+  background-color: ${({ theme }) => theme.textField.bg};
+  border-color: ${({ theme, error }) =>
+    error ? theme.textField.error.borderColor : theme.textField.borderColor};
   border-radius: 4px;
   padding: 15px 20px;
   font-family: Spartan, sans-serif;
   font-size: 12px;
   font-weight: 700;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.25px;
   &:focus {
     outline: none;
-    border-color: ${(props) => (props.error ? '#EC5757' : '#9277ff')};
+    border-color: ${({ theme, error }) =>
+      error ? theme.textField.error.borderColor : theme.textField.focus.borderColor};
   }
   &:placeholder {
     color: rgba(12, 14, 22, 0.4);

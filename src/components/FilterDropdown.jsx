@@ -22,6 +22,7 @@ const DropdownButton = styled.button`
   font-family: Spartan, sans-serif;
   font-size: 12px;
   font-weight: 700;
+  color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.25px;
   cursor: pointer;
   &:after {
@@ -31,7 +32,7 @@ const DropdownButton = styled.button`
     height: 10px;
     background: url(${IconArrowDown}) no-repeat center;
     transform-origin: center;
-    transform: ${(props) => (props.isExpanded ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${({ isExpanded }) => (isExpanded ? 'rotate(180deg)' : 'rotate(0deg)')};
     margin-left: 16px;
   }
 `;
@@ -43,7 +44,7 @@ const DropdownWrapper = styled.div`
   transform: translateX(-50%);
   box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.filterDropdown.dropdown.bg};
   width: 192px;
   padding: 24px;
   margin-top: 23px;

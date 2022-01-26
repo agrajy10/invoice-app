@@ -9,7 +9,7 @@ const Label = styled.h2`
 const Value = styled.p`
   font-size: 15px;
   font-weight: 700;
-  color: #0c0e16;
+  color: ${({ theme }) => theme.text.h1};
 `;
 
 const ChildrenContainer = styled.div`
