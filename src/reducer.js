@@ -31,7 +31,7 @@ const reducer = (state, action) => {
     }
     case ADD_INVOICE: {
       const invoices = [...state.invoices, action.payload];
-      return { ...state, invoices };
+      return { ...state, invoices, filteredInvoices: invoices };
     }
     case DELETE_INVOICE: {
       const newInvoices = state.invoices.filter((invoice) => invoice.id !== action.payload);

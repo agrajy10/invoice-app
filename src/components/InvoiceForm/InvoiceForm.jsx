@@ -218,7 +218,7 @@ function InvoiceForm({
                   }}>
                   Discard
                 </Button>
-                <Button type="button" variant="tertiary" className="draft" onClick={saveInvoice}>
+                <Button type="button" variant="tertiary" className="draft" onClick={() => saveInvoice(values)}>
                   Save as Draft
                 </Button>
                 <Button type="submit" className="save-send">
