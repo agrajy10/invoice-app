@@ -2,21 +2,21 @@ import styled from 'styled-components';
 
 import IconCheck from '../assets/icon-check.svg';
 
-const Wrapper = styled.div`
+const CustomRadioLabel = styled.label`
+  display: block;
   position: relative;
   input[type='radio'] {
     position: absolute;
     top: 0;
     left: 0;
-    visibility: hidden;
+    opacity: 0;
     &:checked + span::before {
       background: ${({ theme }) => theme.customRadio.checked.bg} url(${IconCheck}) no-repeat 40% 40%;
     }
+    &:focus + span::before {
+      border-color: ${({ theme }) => theme.customRadio.hover.borderColor};
+    }
   }
-`;
-
-const CustomRadioLabel = styled.label`
-  position: relative;
   span {
     padding-left: 29px;
     font-size: 12px;
@@ -45,12 +45,10 @@ const CustomRadioLabel = styled.label`
 
 function CustomRadio({ id, label, onChange, ...rest }) {
   return (
-    <Wrapper>
-      <CustomRadioLabel htmlFor={id}>
-        <input type="radio" id={id} onChange={onChange} {...rest} />
-        <span>{label}</span>
-      </CustomRadioLabel>
-    </Wrapper>
+    <CustomRadioLabel htmlFor={id}>
+      <input type="radio" id={id} onChange={onChange} {...rest} />
+      <span>{label}</span>
+    </CustomRadioLabel>
   );
 }
 

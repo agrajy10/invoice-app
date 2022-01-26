@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { Popover } from '@headlessui/react';
 
 import CustomRadio from './CustomRadio';
 
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const DropdownButton = styled.button`
+const DropdownButton = styled(Popover.Button)`
   display: block;
   width: 190px;
   border: none;
@@ -32,12 +33,12 @@ const DropdownButton = styled.button`
     height: 10px;
     background: url(${IconArrowDown}) no-repeat center;
     transform-origin: center;
-    transform: ${({ isExpanded }) => (isExpanded ? 'rotate(180deg)' : 'rotate(0deg)')};
+    transform: ${({ open }) => (open ? 'rotate(180deg)' : 'rotate(0deg)')};
     margin-left: 16px;
   }
 `;
 
-const DropdownWrapper = styled.div`
+const DropdownWrapper = styled(Popover.Panel)`
   position: absolute;
   top: 100%;
   left: 50%;
@@ -49,63 +50,80 @@ const DropdownWrapper = styled.div`
   padding: 24px;
   margin-top: 23px;
   z-index: 777;
-  div:not(:last-child) {
+  & > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+  }
+  div label:not(:last-child) {
     margin-bottom: 16px;
   }
 `;
 
 function FilterDropdown() {
   const { filter, dispatch } = useContext(AppContext);
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const onClick = () => setIsExpanded(!isExpanded);
 
   const onChange = (e) => {
     dispatch({ type: FILTER_INVOICES, payload: e.target.value });
-    setIsExpanded(false);
   };
 
   return (
     <Wrapper>
-      <DropdownButton type="button" onClick={onClick} isExpanded={isExpanded}>
-        Filter by status
-      </DropdownButton>
-      {isExpanded && (
-        <DropdownWrapper>
-          <CustomRadio
-            name="invoices-filter"
-            id="all"
-            label="All"
-            value="all"
-            checked={filter === 'all'}
-            onChange={onChange}
-          />
-          <CustomRadio
-            name="invoices-filter"
-            id="draft"
-            label="Draft"
-            value="draft"
-            checked={filter === 'draft'}
-            onChange={onChange}
-          />
-          <CustomRadio
-            name="invoices-filter"
-            id="pending"
-            label="Pending"
-            value="pending"
-            checked={filter === 'pending'}
-            onChange={onChange}
-          />
-          <CustomRadio
-            name="invoices-filter"
-            id="paid"
-            label="Paid"
-            value="paid"
-            checked={filter === 'paid'}
-            onChange={onChange}
-          />
-        </DropdownWrapper>
-      )}
+      <Popover>
+        {({ open }) => {
+          return (
+            <>
+              <DropdownButton open={open}>Filter by status</DropdownButton>
+              <DropdownWrapper>
+                <span id="lbl">filter by status</span>
+                <div
+                  role="radiogroup"
+                  aria-labelledby="lbl"
+                  aria-activedescendant={filter}
+                  tabIndex="0">
+                  <CustomRadio
+                    name="invoices-filter"
+                    id="all"
+                    label="All"
+                    value="all"
+                    checked={filter === 'all'}
+                    aria-checked={filter === 'all' ? true : false}
+                    onChange={onChange}
+                  />
+                  <CustomRadio
+                    name="invoices-filter"
+                    id="pending"
+                    label="Pending"
+                    value="pending"
+                    checked={filter === 'pending'}
+                    aria-checked={filter === 'pending' ? true : false}
+                    onChange={onChange}
+                  />
+                  <CustomRadio
+                    name="invoices-filter"
+                    id="draft"
+                    label="Draft"
+                    value="draft"
+                    checked={filter === 'draft'}
+                    aria-checked={filter === 'draft' ? true : false}
+                    onChange={onChange}
+                  />
+                  <CustomRadio
+                    name="invoices-filter"
+                    id="paid"
+                    label="Paid"
+                    value="paid"
+                    checked={filter === 'paid'}
+                    aria-checked={filter === 'paid' ? true : false}
+                    onChange={onChange}
+                  />
+                </div>
+              </DropdownWrapper>
+            </>
+          );
+        }}
+      </Popover>
     </Wrapper>
   );
 }
