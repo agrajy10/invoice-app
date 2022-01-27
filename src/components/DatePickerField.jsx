@@ -130,6 +130,7 @@ function DatePickerField({
       <InputLabel htmlFor={id}>{label}</InputLabel>
       {error && <span>{error}</span>}
       <DatePickerInput
+        id={id}
         name={name}
         value={value}
         selected={value}

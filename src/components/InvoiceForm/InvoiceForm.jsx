@@ -1,6 +1,7 @@
 import { Formik, Form } from 'formik';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
 
 import TextField from '../TextField';
 import Button from '../Button';
@@ -147,7 +148,7 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                 </div>
                 <div>
                   <FormTextField
-                    label="Postal Colde"
+                    label="Postal Code"
                     id="client-postal-code"
                     name="clientAddress.postCode"
                     type="text"
@@ -171,7 +172,6 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                   id="createdAt"
                   value={values.createdAt}
                   selected={values.createdAt}
-                  minDate={new Date()}
                   onChange={setFieldValue}
                   error={errors.createdAt}
                 />
@@ -183,7 +183,6 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                   id="paymentDue"
                   selected={values.paymentDue}
                   value={values.paymentDue}
-                  minDate={new Date()}
                   onChange={setFieldValue}
                   error={errors.paymentDue}
                 />

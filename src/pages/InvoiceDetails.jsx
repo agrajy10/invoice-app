@@ -175,15 +175,20 @@ function InvoiceDetails() {
               {invoice.status !== 'paid' && (
                 <Button
                   variant="secondary"
+                  aria-label="Edit Invoice"
                   onClick={() => dispatch({ type: EDIT_INVOICE, payload: invoice.id })}>
                   Edit
                 </Button>
               )}
-              <Button variant="warning" onClick={() => setIsDeleteModalOpen(true)}>
+              <Button
+                variant="warning"
+                aria-label="Delete Invoice"
+                onClick={() => setIsDeleteModalOpen(true)}>
                 Delete
               </Button>
               {invoice.status !== 'paid' && invoice.status !== 'draft' && (
                 <Button
+                  aria-label="Mark Invoice as Paid"
                   variant="primary"
                   onClick={() => dispatch({ type: MARK_INVOICE_PAID, payload: invoice.id })}>
                   Mark as Paid

@@ -1,3 +1,4 @@
+import { registerLocale } from 'react-datepicker';
 import styled from 'styled-components';
 
 import IconPlus from '../assets/icon-plus.svg';
@@ -44,16 +45,24 @@ const IconWrapper = styled.div`
   border-radius: 50%;
 `;
 
-function Button({ children, className, icon, onClick, type = 'button', variant = 'primary' }) {
+function Button({
+  children,
+  className,
+  icon,
+  onClick,
+  type = 'button',
+  variant = 'primary',
+  ...rest
+}) {
   return icon ? (
-    <IconButton className={className} onClick={onClick} type={type} variant={variant}>
+    <IconButton className={className} onClick={onClick} type={type} variant={variant} {...rest}>
       <IconWrapper>
         <img src={IconPlus} alt="" />
       </IconWrapper>
       {children}
     </IconButton>
   ) : (
-    <TextButton className={className} onClick={onClick} type={type} variant={variant}>
+    <TextButton className={className} onClick={onClick} type={type} variant={variant} {...rest}>
       {children}
     </TextButton>
   );

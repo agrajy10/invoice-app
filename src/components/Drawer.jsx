@@ -1,9 +1,14 @@
-import { createPortal } from 'react-dom';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { Dialog } from '@headlessui/react';
+
+import { AppContext } from '../context/AppContext';
+
+import { CLOSE_DRAWER } from '../actions';
 
 import deviceSize from '../styles/breakpoints';
 
-const Overlay = styled.div`
+const Overlay = styled(Dialog.Overlay)`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.49);
@@ -45,17 +50,20 @@ const DrawerWrapper = styled.div`
 `;
 
 function Drawer({ children, isOpen }) {
-  if (!isOpen) {
-    return null;
-  }
-  return createPortal(
-    <>
+  const { isEditingInvoice, editInvoiceID, dispatch } = useContext(AppContext);
+  return (
+    <Dialog open={isOpen} onClose={() => dispatch({ type: CLOSE_DRAWER })}>
       <Overlay />
       <DrawerWrapper>
-        <div>{children}</div>
+        <div>
+          {isEditingInvoice && (
+            <Dialog.Title className="sr-only">Edit Invoice {editInvoiceID}</Dialog.Title>
+          )}
+          {!isEditingInvoice && <Dialog.Title className="sr-only">New Invoice</Dialog.Title>}
+          {children}
+        </div>
       </DrawerWrapper>
-    </>,
-    document.getElementById('portal')
+    </Dialog>
   );
 }
 

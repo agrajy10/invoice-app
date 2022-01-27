@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useRef, useEffect } from 'react';
 import { FieldArray, useFormikContext } from 'formik';
 
 import InvoiceListItemTotal from './InvoiceListItemTotal';
@@ -116,7 +117,10 @@ function InvoiceItemsList() {
                   </div>
                   <InvoiceListItemTotal index={index} />
                   <div>
-                    <DeleteButton type="button" onClick={() => arrayHelpers.remove(index)}>
+                    <DeleteButton
+                      aria-label="Delete invoice item"
+                      type="button"
+                      onClick={() => arrayHelpers.remove(index)}>
                       <DeleteIcon />
                     </DeleteButton>
                   </div>
