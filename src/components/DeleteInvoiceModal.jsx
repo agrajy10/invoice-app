@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
+import { Dialog } from '@headlessui/react';
 
 import Button from './Button';
 
@@ -9,7 +10,7 @@ import { AppContext } from '../context/AppContext';
 
 import { DELETE_INVOICE } from '../actions';
 
-const Overlay = styled.div`
+const Overlay = styled(Dialog.Overlay)`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.49);
@@ -29,14 +30,14 @@ const ModalContainer = styled.div`
   z-index: 7002;
 `;
 
-const ModalHeading = styled.p`
+const ModalHeading = styled(Dialog.Title)`
   font-size: 20px;
   font-weight: 700;
   color: ${({ theme }) => theme.deleteModal.heading};
   margin-bottom: 12px;
 `;
 
-const ModalMessage = styled.p`
+const ModalMessage = styled(Dialog.Description)`
   font-size: 12px;
   color: ${({ theme }) => theme.deleteModal.body};
   letter-spacing: -0.23px;
@@ -54,17 +55,14 @@ const ButtonContainer = styled.div`
 function DeleteInvoiceModal({ id, isOpen, closeModal }) {
   const { dispatch } = useContext(AppContext);
   const navigate = useNavigate();
-  if (!isOpen) {
-    return null;
-  }
 
   const deleteInvoice = () => {
     dispatch({ type: DELETE_INVOICE, payload: id });
     navigate('/');
   };
 
-  return createPortal(
-    <>
+  return (
+    <Dialog open={isOpen} onClose={closeModal}>
       <Overlay />
       <ModalContainer>
         <ModalHeading>Confirm Deletion</ModalHeading>
@@ -80,8 +78,7 @@ function DeleteInvoiceModal({ id, isOpen, closeModal }) {
           </Button>
         </ButtonContainer>
       </ModalContainer>
-    </>,
-    document.getElementById('portal')
+    </Dialog>
   );
 }
 
