@@ -16,11 +16,10 @@ import { AppContext } from './context/AppContext';
 
 function App() {
   const { theme, isDrawerOpen } = useContext(AppContext);
-  const selectedTheme = theme === 'light' ? lightTheme : darkTheme;
 
   return (
     <div className="App">
-      <ThemeProvider theme={selectedTheme}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyle isDrawerOpen={isDrawerOpen} />
         <BrowserRouter>
           <Header />

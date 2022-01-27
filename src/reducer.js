@@ -8,7 +8,9 @@ import {
   EDIT_INVOICE,
   UPDATE_INVOICE,
   CANCEL_INVOICE_EDIT,
-  LOAD_INVOICES_DATA
+  LOAD_INVOICES_DATA,
+  ENABLE_DARK_MODE,
+  DISABLE_DARK_MODE
 } from './actions';
 
 const reducer = (state, action) => {
@@ -80,7 +82,13 @@ const reducer = (state, action) => {
       };
     }
     case LOAD_INVOICES_DATA: {
-      return { ...state, invoices: action.payload, filteredInvoices: action.payload };
+      return { ...action.payload };
+    }
+    case ENABLE_DARK_MODE: {
+      return { ...state, theme: 'dark' };
+    }
+    case DISABLE_DARK_MODE: {
+      return { ...state, theme: 'light' };
     }
     default: {
       return state;
