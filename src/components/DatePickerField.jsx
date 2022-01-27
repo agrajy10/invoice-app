@@ -92,6 +92,10 @@ const DatePickerInput = styled(DatePicker)`
     outline: none;
     border-color: ${({ theme }) => theme.datePicker.focus.borderColor};
   }
+  &:disabled {
+    opacity: 0.6;
+    cursor: auto;
+  }
 `;
 
 const CustomHeader = styled.div`

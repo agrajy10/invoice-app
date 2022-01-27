@@ -88,6 +88,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                 id="sender-street-address"
                 name="senderAddress.street"
                 type="text"
+                required
+                aria-required="true"
               />
               <AddressFieldsGrid>
                 <div>
@@ -96,6 +98,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                     id="sender-city"
                     name="senderAddress.city"
                     type="text"
+                    required
+                    aria-required="true"
                   />
                 </div>
                 <div>
@@ -104,6 +108,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                     id="sender-postal-code"
                     name="senderAddress.postCode"
                     type="text"
+                    required
+                    aria-required="true"
                   />
                 </div>
                 <div>
@@ -112,6 +118,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                     id="sender-country"
                     name="senderAddress.country"
                     type="text"
+                    required
+                    aria-required="true"
                   />
                 </div>
               </AddressFieldsGrid>
@@ -123,6 +131,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                 id="sender-client-name"
                 name="clientName"
                 type="text"
+                required
+                aria-required="true"
               />
               <FormTextField
                 label="Client’s Email"
@@ -130,12 +140,16 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                 name="clientEmail"
                 type="email"
                 placeholder="e.g. email@example.com"
+                required
+                aria-required="true"
               />
               <FormTextField
                 label="Street Address"
                 id="client-street-address"
                 name="clientAddress.street"
                 type="text"
+                required
+                aria-required="true"
               />
               <AddressFieldsGrid>
                 <div>
@@ -144,6 +158,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                     id="client-city"
                     name="clientAddress.city"
                     type="text"
+                    required
+                    aria-required="true"
                   />
                 </div>
                 <div>
@@ -152,6 +168,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                     id="client-postal-code"
                     name="clientAddress.postCode"
                     type="text"
+                    required
+                    aria-required="true"
                   />
                 </div>
                 <div>
@@ -160,6 +178,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                     id="client-country"
                     name="clientAddress.country"
                     type="text"
+                    required
+                    aria-required="true"
                   />
                 </div>
               </AddressFieldsGrid>
@@ -174,6 +194,7 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                   selected={values.createdAt}
                   onChange={setFieldValue}
                   error={errors.createdAt}
+                  disabled={values.status === 'pending'}
                 />
               </div>
               <div>
@@ -194,6 +215,8 @@ function InvoiceForm({ initialValues, validationSchema, onSubmit, saveInvoice, d
                   name="description"
                   type="text"
                   placeholder="e.g. Graphic Design Service"
+                  required
+                  aria-required="true"
                 />
               </div>
             </InvoiceDatesGrid>
