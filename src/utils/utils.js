@@ -18,3 +18,15 @@ export function formatPrice(amount) {
     currency: 'GBP'
   }).format(amount);
 }
+
+export function invoicesCountText(invoiceCount) {
+  let msg;
+  if (invoiceCount === 0) {
+    msg = 'No invoices';
+  } else if (invoiceCount === 1) {
+    msg = '1 Invoice';
+  } else {
+    msg = `${invoiceCount} Invoices`;
+  }
+  return msg;
+}

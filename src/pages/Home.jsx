@@ -11,6 +11,8 @@ import { AppContext } from '../context/AppContext';
 
 import { OPEN_DRAWER } from '../actions';
 
+import { invoicesCountText } from '../utils/utils';
+
 import deviceSize from '../styles/breakpoints';
 
 const HomeHeader = styled.div`
@@ -71,7 +73,7 @@ function Home() {
       <HomeHeader>
         <div>
           <Heading>Invoices</Heading>
-          <InvoicesCount>{filteredInvoices.length} invoices</InvoicesCount>
+          <InvoicesCount>{invoicesCountText(filteredInvoices.length)}</InvoicesCount>
         </div>
         <FilterDropdown />
         <NewInvoiceButton icon={true} onClick={() => dispatch({ type: OPEN_DRAWER })}>
