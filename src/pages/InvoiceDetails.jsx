@@ -23,14 +23,14 @@ const BackButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: -0.25px;
   text-decoration: none;
   color: ${({ theme }) => theme.text.h1};
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   img {
-    margin-right: 23px;
+    margin-right: 1.4375rem;
   }
 `;
 
@@ -39,9 +39,9 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.invoiceDetails.bg};
-  border-radius: 8px;
-  padding: 24px 32px;
-  margin-bottom: 16px;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
   @media screen and (min-width: ${deviceSize.md}) {
     justify-content: flex-start;
@@ -50,7 +50,7 @@ const Header = styled.header`
 `;
 
 const StatusLbl = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #858bb2;
   font-weight: 500;
 `;
@@ -65,7 +65,7 @@ const InvoiceActions = styled.div`
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.invoiceDetails.bg};
-  padding: 21px 24px;
+  padding: 1.3125rem 1.5rem;
   @media screen and (min-width: ${deviceSize.md}) {
     position: static;
     margin-left: auto;
@@ -75,12 +75,12 @@ const InvoiceActions = styled.div`
 
 const DetailsCard = styled.main`
   background-color: ${({ theme }) => theme.invoiceDetails.bg};
-  border-radius: 8px;
-  padding: 24px;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
   color: ${({ theme }) => theme.text.color2};
   line-height: 1.6;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
-  margin-bottom: 45px;
+  margin-bottom: 2.8125rem;
 `;
 
 const DetailsCardGrid = styled.div`
@@ -92,7 +92,7 @@ const DetailsCardGrid = styled.div`
     'invoicedates clientnameaddress'
     'clientemail clientemail';
   gap: 30px 20px;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   .invoice-id-name {
     grid-area: nameid;
   }
@@ -118,29 +118,29 @@ const InvoiceIdName = styled.div`
 `;
 
 const InvoiceID = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.23px;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   margin: 0;
   &:before {
     content: '#';
     color: #7e88c3;
   }
   @media screen and (min-width: ${deviceSize.md}) {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `;
 
 const InvoiceName = styled.h1`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
-  margin: 4px 0;
+  margin: 0.25rem 0;
 `;
 
 const SenderAddress = styled.address`
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-style: normal;
   letter-spacing: -0.23px;
   @media screen and (min-width: ${deviceSize.md}) {

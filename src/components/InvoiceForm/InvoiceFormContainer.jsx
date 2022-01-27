@@ -13,10 +13,10 @@ import { convertDateToString, convertStringToDate } from '../../utils/utils';
 
 const FormHeading = styled.span`
   display: block;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 48px;
+  margin-bottom: 3rem;
   span {
     &:before {
       content: '#';

@@ -6,11 +6,11 @@ import IconPlus from '../assets/icon-plus.svg';
 const ButtonBase = styled.button`
   display: inline-block;
   font-family: Spartan, sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: -0.25px;
   line-height: 1;
-  border-radius: 100px;
+  border-radius: 6.25rem;
   border: none;
   cursor: pointer;
   user-select: none;
@@ -23,17 +23,17 @@ const ButtonBase = styled.button`
 `;
 
 const TextButton = styled(ButtonBase)`
-  padding: 16px 18px;
+  padding: 1rem 1.125rem;
 `;
 
 const IconButton = styled(ButtonBase)`
   position: relative;
-  padding: 16px 16px 16px 56px;
+  padding: 1rem 1rem 1rem 3.5rem;
 `;
 
 const IconWrapper = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;

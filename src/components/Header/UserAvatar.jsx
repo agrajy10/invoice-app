@@ -5,7 +5,7 @@ import deviceSize from '../../styles/breakpoints';
 import avatar from '../../assets/image-avatar.jpg';
 
 const AvatarContainer = styled.div`
-  padding: 0 24px;
+  padding: 0 1.5rem;
   display: flex;
   border-left: 1px solid #494e6e;
 
@@ -14,7 +14,7 @@ const AvatarContainer = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 24px;
+    padding: 1.5rem;
     border-left: none;
     border-top: 1px solid #494e6e;
     margin: 0;
@@ -23,13 +23,13 @@ const AvatarContainer = styled.div`
 
 const AvatarImageHolder = styled.div`
   margin: auto;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   overflow: hidden;
   @media screen and (min-width: ${deviceSize.lg}) {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 `;
 

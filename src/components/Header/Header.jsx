@@ -17,15 +17,15 @@ const HeaderContainer = styled.header`
     display: block;
     top: 0;
     left: 0;
-    width: 103px;
+    width: 6.4375rem;
     height: 100%;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 1.25rem 1.25rem 0;
   }
 `;
 
 const Logo = styled.img`
-  width: 72px;
-  height: 72px;
+  width: 4.5rem;
+  height: 4.5rem;
   @media screen and (min-width: ${deviceSize.lg}) {
     width: 100%;
     height: auto;

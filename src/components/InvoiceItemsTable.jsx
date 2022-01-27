@@ -5,15 +5,15 @@ import { formatPrice } from '../utils/utils';
 const Table = styled.table`
   width: 100%;
   background-color: ${({ theme }) => theme.invoiceTable.bg};
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   border-collapse: collapse;
 `;
 
 const TableHead = styled.th`
-  padding: 32px;
+  padding: 2rem;
   color: ${({ theme }) => theme.invoiceTable.heading};
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: -0.23px;
 `;
@@ -36,9 +36,9 @@ const ItemTotalHead = styled(TableHead)`
 
 const Body = styled.tbody`
   tr td {
-    padding: 0 32px 32px 32px;
+    padding: 0 2rem 2rem 2rem;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 `;
 
@@ -63,18 +63,18 @@ const Footer = styled.tfoot`
   background-color: ${({ theme }) => theme.invoiceTable.footer.bg};
   color: ${({ theme }) => theme.invoiceTable.footer.color};
   tr td {
-    padding: 24px 32px;
+    padding: 1.5rem 2rem;
   }
 `;
 
 const TotalLabel = styled.td`
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 500;
   text-align: left;
 `;
 
 const InvoiceTotal = styled.td`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.42px;
   text-align: right;

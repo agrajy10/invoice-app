@@ -19,30 +19,30 @@ const HomeHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   & > div:first-child {
     margin-right: auto;
   }
   @media screen and (min-width: ${deviceSize.md}) {
-    margin-bottom: 56px;
+    margin-bottom: 3.5rem;
   }
   @media screen and (min-width: ${deviceSize.lg}) {
-    margin-bottom: 65px;
+    margin-bottom: 4.0625rem;
   }
 `;
 
 const Heading = styled.h1`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 7px;
+  margin-bottom: 0.4375rem;
   @media screen and (min-width: ${deviceSize.md}) {
-    font-size: 32px;
+    font-size: 2rem;
   }
 `;
 
 const InvoicesCount = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: ${({ theme }) => theme.text.color1};
   text-spacing: -0.25px;

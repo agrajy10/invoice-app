@@ -21,7 +21,7 @@ const DrawerWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 72px;
+  padding-top: 4.5rem;
   z-index: 7010;
   & > div {
     background-color: ${({ theme }) => theme.drawer.bg};
@@ -29,22 +29,22 @@ const DrawerWrapper = styled.div`
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 32px 24px;
+    padding: 2rem 1.5rem;
   }
 
   @media screen and (min-width: ${deviceSize.md}) {
     & > div {
-      padding: 56px 56px 32px 56px;
-      max-width: 616px;
-      border-radius: 0 20px 20px 0;
+      padding: 3.5rem 3.5rem 2rem 3.5rem;
+      max-width: 38.5rem;
+      border-radius: 0 1.25rem 1.25rem 0;
     }
   }
 
   @media screen and (min-width: ${deviceSize.lg}) {
     padding-top: 0;
     & > div {
-      max-width: 719px;
-      padding: 56px 56px 32px 160px;
+      max-width: 44.9375rem;
+      padding: 3.5rem 3.5rem 2rem 10rem;
     }
   }
 `;

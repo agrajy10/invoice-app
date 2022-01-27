@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useRef, useEffect } from 'react';
+
 import { FieldArray, useFormikContext } from 'formik';
 
 import InvoiceListItemTotal from './InvoiceListItemTotal';
@@ -11,34 +11,34 @@ import deviceSize from '../../styles/breakpoints';
 import { ReactComponent as DeleteIcon } from '../../assets/icon-delete.svg';
 
 const Wrapper = styled.div`
-margin-top: 8px;
+margin-top: 0.5rem;
 & > span {
   display: block;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   line-height: 1;
   color: #777f98;
-  margin-bottom: 35px;
+  margin-bottom: 2.1875rem;
 }
 .error {
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 600;
   color: ${({ theme }) => theme.invoiceItemsList.label.error.color};
   display: block;
-  margin-top: 32px;
+  margin-top: 2rem;
 }
 .item-grid {
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 20px;
   gap: 24px 16px;
   align-items: center;
-  margin-bottom: 48px;
+  margin-bottom: 3rem;
   div:first-child {
     grid-column: 1/5;
   }
   div:nth-child(2) input {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0.3125rem;
+    padding-right: 0.3125rem;
     text-align: center;
   }
   label span {
@@ -49,7 +49,7 @@ margin-top: 8px;
   }
   @media screen and (min-width: ${deviceSize.md}) {
     grid-template-columns: 1fr 50px 100px 70px 20px;
-    margin-bottom: 18px;
+    margin-bottom: 1.125rem;
     div:first-child {
       grid-column: auto;
     }
@@ -60,10 +60,10 @@ const DeleteButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   padding: 0;
-  margin-top: 15px;
+  margin-top: 0.9375rem;
   border: none;
   background-color: transparent;
   cursor: pointer;

@@ -12,8 +12,8 @@ import { ReactComponent as IconSun } from '../../assets/icon-sun.svg';
 import { ReactComponent as IconMoon } from '../../assets/icon-moon.svg';
 
 const Button = styled(Switch)`
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -21,7 +21,7 @@ const Button = styled(Switch)`
   align-items: center;
   justify-content: center;
   margin-left: auto;
-  margin-right: 23px;
+  margin-right: 1.4375rem;
   align-self: center;
   color: ${({ theme }) => theme.themeToggleButton.color};
   &:hover {

@@ -10,10 +10,10 @@ const DatePickerStyling = createGlobalStyle`
   .react-datepicker {
       font-family:Spartan, sans-serif;
       font-weight:700;
-      font-size:12px;
+      font-size:0.75rem;
       letter-spacing:-0.25px;
       color:${({ theme }) => theme.datePicker.color};
-      border-radius:8px;
+      border-radius:0.5rem;
       border:none;
       background-color:${({ theme }) => theme.datePicker.bg};
   }
@@ -28,7 +28,7 @@ const DatePickerStyling = createGlobalStyle`
   }
 
   .react-datepicker__month {
-      padding:0 22px 22px 22px;
+      padding:0 1.375rem 1.375rem 1.375rem;
       margin:0;
   }
 
@@ -59,31 +59,31 @@ const DatePickerStyling = createGlobalStyle`
 const InputLabel = styled.label`
   display: block;
   font-family: Spartan, sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: ${({ theme }) => theme.datePicker.label.color};
   line-height: 1;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   & + span {
     display: block;
-    font-size: 10px;
+    font-size: 0.625rem;
     color: ${({ theme }) => theme.datePicker.label.error.color};
   }
 `;
 
 const DatePickerInput = styled(DatePicker)`
   width: 100%;
-  height: 48px;
+  height: 3rem;
   background: ${({ theme }) => theme.datePicker.bg} url(${IconCalendar}) no-repeat calc(100% - 16px)
     center;
   border-width: 1px;
   border-style: solid;
   border-color: ${({ theme, error }) =>
     error ? theme.datePicker.error.borderColor : theme.datePicker.borderColor};
-  border-radius: 4px;
-  padding: 15px 42px 15px 20px;
+  border-radius: 0.25rem;
+  padding: 0.9375rem 2.625rem 0.9375rem 1.25rem;
   font-family: Spartan, sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.25px;
@@ -102,12 +102,12 @@ const CustomHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px;
+  padding: 1.5625rem;
 `;
 
 const ArrowButton = styled.button`
   width: auto;
-  height: 10px;
+  height: 0.625rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -4,16 +4,16 @@ import deviceSize from '../styles/breakpoints';
 
 const Wrapper = styled.main`
   width: 100%;
-  padding: 32px 24px 105px 24px;
+  padding: 2rem 1.5rem 6.5625rem 1.5rem;
   margin: 0 auto;
 
   @media screen and (min-width: ${deviceSize.md}) {
-    max-width: 778px;
-    padding-top: 56px;
+    max-width: 48.625rem;
+    padding-top: 3.5rem;
   }
 
   @media screen and (min-width: ${deviceSize.lg}) {
-    padding-top: 72px;
+    padding-top: 4.5rem;
   }
 `;
 

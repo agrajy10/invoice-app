@@ -12,12 +12,12 @@ import deviceSize from '../../styles/breakpoints';
 
 const FieldSet = styled.fieldset`
   border: none;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 `;
 
 const Legend = styled.legend`
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   font-family: Spartan, sans-serif;
   font-weight: 700;
   color: ${({ theme }) => theme.form.legend.color};
@@ -25,7 +25,7 @@ const Legend = styled.legend`
 `;
 
 const FormTextField = styled(TextField)`
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 `;
 
 const AddressFieldsGrid = styled.div`
@@ -44,9 +44,9 @@ const AddressFieldsGrid = styled.div`
 `;
 
 const InvoiceDatesGrid = styled.div`
-  margin-top: 24px;
+  margin-top: 1.5rem;
   input {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
   @media screen and (min-width: ${deviceSize.md}) {
     display: grid;
@@ -65,7 +65,7 @@ const FormBottom = styled.div`
   justify-content: flex-start;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 2.5rem;
   .discard {
     margin-right: auto;
   }

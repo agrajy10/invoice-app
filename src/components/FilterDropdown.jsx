@@ -17,11 +17,11 @@ const Wrapper = styled.div`
 
 const DropdownButton = styled(Popover.Button)`
   display: block;
-  width: 190px;
+  width: 11.875rem;
   border: none;
   background-color: transparent;
   font-family: Spartan, sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: ${({ theme }) => theme.text.h1};
   letter-spacing: -0.25px;
@@ -29,12 +29,12 @@ const DropdownButton = styled(Popover.Button)`
   &:after {
     content: '';
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 0.625rem;
+    height: 0.625rem;
     background: url(${IconArrowDown}) no-repeat center;
     transform-origin: center;
     transform: ${({ open }) => (open ? 'rotate(180deg)' : 'rotate(0deg)')};
-    margin-left: 16px;
+    margin-left: 1rem;
   }
 `;
 
@@ -44,11 +44,11 @@ const DropdownWrapper = styled(Popover.Panel)`
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.filterDropdown.dropdown.bg};
-  width: 192px;
-  padding: 24px;
-  margin-top: 23px;
+  width: 12rem;
+  padding: 1.5rem;
+  margin-top: 1.4375rem;
   z-index: 777;
   & > span {
     position: absolute;
@@ -57,7 +57,7 @@ const DropdownWrapper = styled(Popover.Panel)`
     visibility: hidden;
   }
   div label:not(:last-child) {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 `;
 

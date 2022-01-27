@@ -18,8 +18,8 @@ const CustomRadioLabel = styled.label`
     }
   }
   span {
-    padding-left: 29px;
-    font-size: 12px;
+    padding-left: 1.8125rem;
+    font-size: 0.75rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.25px;
@@ -28,11 +28,11 @@ const CustomRadioLabel = styled.label`
       content: '';
       box-sizing: border-box;
       display: inline-block;
-      width: 16px;
-      height: 16px;
+      width: 1rem;
+      height: 1rem;
       border: 1px solid ${({ theme }) => theme.customRadio.borderColor};
       background-color: ${({ theme }) => theme.customRadio.bg};
-      border-radius: 2px;
+      border-radius: 0.125rem;
       position: absolute;
       top: -2px;
       left: 0;

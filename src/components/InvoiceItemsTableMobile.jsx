@@ -5,31 +5,18 @@ import { formatPrice } from '../utils/utils';
 const ItemsTable = styled.table`
   width: 100%;
   background-color: ${({ theme }) => theme.invoiceTable.bg};
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   border-collapse: collapse;
 `;
 
 const Body = styled.tbody`
   tr td {
-    padding: 24px;
+    padding: 0 1.5rem 1.5rem 1.5rem;
   }
-  tr:last-child td {
-    padding-top: 0;
+  tr:first-child td {
+    padding-top: 1.5rem;
   }
-`;
-
-const Hidden = styled.div`
-  border: 0px;
-  clip: rect(0px, 0px, 0px, 0px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0px;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  overflow-wrap: normal;
 `;
 
 const ItemNameCol = styled.td`
@@ -37,21 +24,21 @@ const ItemNameCol = styled.td`
 `;
 
 const ItemName = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: -0.23px;
   color: ${({ theme }) => theme.text.h1};
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
 `;
 
 const ItemQtyPrice = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: ${({ theme }) => theme.invoiceTable.heading};
 `;
 
 const ItemTotalCol = styled.td`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   text-align: right;
   color: ${({ theme }) => theme.text.h1};
@@ -61,18 +48,18 @@ const Footer = styled.tfoot`
   background-color: ${({ theme }) => theme.invoiceTable.footer.bg};
   color: ${({ theme }) => theme.invoiceTable.footer.color};
   tr td {
-    padding: 24px;
+    padding: 1.5rem;
   }
 `;
 
 const TotalLabel = styled.td`
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 500;
   text-align: left;
 `;
 
 const InvoiceTotal = styled.td`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.42px;
   text-align: right;
@@ -84,10 +71,10 @@ function InvoiceItemsTableMobile({ status, id, items, total }) {
       <thead>
         <tr>
           <th>
-            <Hidden>Item</Hidden>
+            <div className="sr-only">Item</div>
           </th>
           <th>
-            <Hidden>Total</Hidden>
+            <div className="sr-only">Total</div>
           </th>
         </tr>
       </thead>

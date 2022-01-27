@@ -8,16 +8,16 @@ const Wrapper = styled.div`
   .total-label {
     display: block;
     font-family: Spartan, sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     line-height: 1;
     color: ${({ theme }) => theme.invoiceItemsList.label.color};
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
   }
   .amount {
     display: inline-block;
-    height: 48px;
-    font-size: 12px;
+    height: 3rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: ${({ theme }) => theme.invoiceItemsList.total};
     letter-spacing: -0.25px;
