@@ -5,6 +5,7 @@ import MainContainer from '../layout/MainContainer';
 import InvoiceItem from '../components/InvoiceItem';
 import FilterDropdown from '../components/FilterDropdown';
 import Button from '../components/Button';
+import NoInvoice from '../components/NoInvoice';
 
 import { AppContext } from '../context/AppContext';
 
@@ -77,7 +78,7 @@ function Home() {
           New <span>Invoice</span>
         </NewInvoiceButton>
       </HomeHeader>
-      {filteredInvoices.length > 0 && (
+      {filteredInvoices.length > 0 ? (
         <InvoicesList>
           {filteredInvoices.map((invoice) => (
             <li key={invoice.id}>
@@ -85,6 +86,8 @@ function Home() {
             </li>
           ))}
         </InvoicesList>
+      ) : (
+        <NoInvoice />
       )}
     </MainContainer>
   );
