@@ -34,6 +34,9 @@ Users should be able to:
 ### Screenshot
 
 ![](https://raw.githubusercontent.com/agrajy10/invoice-app/master/screenshots/Screenshot_1.png)
+![](https://raw.githubusercontent.com/agrajy10/invoice-app/master/screenshots/Screenshot_2.png)
+![](https://raw.githubusercontent.com/agrajy10/invoice-app/master/screenshots/Screenshot_3.png)
+![](https://raw.githubusercontent.com/agrajy10/invoice-app/master/screenshots/Screenshot_4.png)
 
 ### Links
 
