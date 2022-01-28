@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](https://raw.githubusercontent.com/agrajy10/invoice-app/master/screenshots/Screenshot_1.png)
 
 ### Links
 
