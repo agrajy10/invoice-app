@@ -43,7 +43,7 @@ Users should be able to:
 ## My process
 
 At the beginning of the project, first I outlined all the components of the app and then created static version of the app in reactjs.
-After static version, moved on to global and local state of the app and components. For state management I've am using react context API and reducer.
+After static version, moved on to global and local state of the app and components. For state management I am using react context API and reducer.
 I followed mobile-first approach to style the app, faced difficulty while trying to reorder items in invoice card for desktop view but sorted out with
 use of grid-template-area property in CSS.
 To keep track of changes done by user I am using localStorage.
@@ -64,11 +64,11 @@ To keep track of changes done by user I am using localStorage.
 
 ### What I learned
 
--Got to practice react contextAPI and reducer for state management.
--Learned more about Formik and Yup for validation.
--Learned how to add/remove form fields dynamically.
--Applied grid-template-areas property while using CSS grid.
--Learned how to implement light/dark mode through styled-components.
+- Got to practice react contextAPI and reducer for state management.
+- Learned more about Formik and Yup for validation.
+- Learned how to add/remove form fields dynamically.
+- Applied grid-template-areas property while using CSS grid.
+- Learned how to implement light/dark mode through styled-components.
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
