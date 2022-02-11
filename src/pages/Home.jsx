@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import MainContainer from '../layout/MainContainer';
 import InvoiceItem from '../components/InvoiceItem';
@@ -66,6 +67,26 @@ const NewInvoiceButton = styled(Button)`
   }
 `;
 
+const invoiceListVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      when: 'beforeChildren',
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const invoiceListItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0
+  }
+};
 function Home() {
   const { filteredInvoices, dispatch } = useContext(AppContext);
   return (
@@ -81,11 +102,15 @@ function Home() {
         </NewInvoiceButton>
       </HomeHeader>
       {filteredInvoices.length > 0 ? (
-        <InvoicesList>
+        <InvoicesList
+          as={motion.ul}
+          variants={invoiceListVariants}
+          initial="hidden"
+          animate="visible">
           {filteredInvoices.map((invoice) => (
-            <li key={invoice.id}>
+            <motion.li variants={invoiceListItemVariants} key={invoice.id}>
               <InvoiceItem {...invoice} />
-            </li>
+            </motion.li>
           ))}
         </InvoicesList>
       ) : (

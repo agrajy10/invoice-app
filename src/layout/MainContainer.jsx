@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import deviceSize from '../styles/breakpoints';
 
@@ -17,8 +18,29 @@ const Wrapper = styled.main`
   }
 `;
 
+const wrapperVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween'
+    }
+  },
+  exit: { opacity: 0, y: 100 }
+};
+
 function MainContainer({ children }) {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper
+      as={motion.main}
+      variants={wrapperVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit">
+      {children}
+    </Wrapper>
+  );
 }
 
 export default MainContainer;

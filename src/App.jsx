@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import 'normalize.css';
+import { AnimatePresence } from 'framer-motion';
 
 import GlobalStyle from './styles/globalStyles';
 import Header from './components/Header/Header';
@@ -15,19 +16,20 @@ import { lightTheme, darkTheme } from './styles/theme';
 import { AppContext } from './context/AppContext';
 
 function App() {
+  const location = useLocation();
   const { theme, isDrawerOpen } = useContext(AppContext);
 
   return (
     <div className="App">
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyle isDrawerOpen={isDrawerOpen} />
-        <BrowserRouter>
-          <Header />
-          <Routes>
+        <Header />
+        <AnimatePresence exitBeforeEnter>
+          <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/:invoiceId" element={<InvoiceDetails />} />
           </Routes>
-        </BrowserRouter>
+        </AnimatePresence>
         <Drawer isOpen={isDrawerOpen}>
           <InvoiceFormContainer />
         </Drawer>
