@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/invoice-app-using-react-js-and-styled-components-Oj5-YSNaX)
-- Live Site URL: [Add live site URL here](https://invoice-app-react.netlify.app/)
+- Solution URL: [https://www.frontendmentor.io/solutions/invoice-app-using-react-js-and-styled-components-Oj5-YSNaX](https://www.frontendmentor.io/solutions/invoice-app-using-react-js-and-styled-components-Oj5-YSNaX)
+- Live Site URL: [https://invoice-app-react.netlify.app/](https://invoice-app-react.netlify.app/)
 
 ## My process
 
